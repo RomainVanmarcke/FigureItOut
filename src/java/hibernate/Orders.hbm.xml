@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 mars 2018 15:45:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Orders" table="orders" catalog="figureitout" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="address" class="entities.Address" fetch="select">
+            <column name="AddressID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="shippinginfo" class="entities.Shippinginfo" fetch="select">
+            <column name="ShippingInfoID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="entities.User" fetch="select">
+            <column name="UserID" not-null="true" />
+        </many-to-one>
+        <property name="date" type="string">
+            <column name="Date" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="10" />
+        </property>
+        <property name="tag" type="string">
+            <column name="Tag" length="65535" />
+        </property>
+        <set name="transactions" table="transaction" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="OrderID" not-null="true" />
+            </key>
+            <one-to-many class="entities.Transaction" />
+        </set>
+        <set name="lineorders" table="lineorder" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="OrderID" not-null="true" />
+            </key>
+            <one-to-many class="entities.Lineorder" />
+        </set>
+    </class>
+</hibernate-mapping>

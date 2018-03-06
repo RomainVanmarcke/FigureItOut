@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 mars 2018 15:45:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Linecart" table="linecart" catalog="figureitout" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="item" class="entities.Item" fetch="select">
+            <column name="ItemID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="entities.User" fetch="select">
+            <column name="UserID" not-null="true" />
+        </many-to-one>
+        <property name="quantity" type="java.lang.Integer">
+            <column name="Quantity" />
+        </property>
+        <property name="price" type="java.lang.Integer">
+            <column name="Price" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 mars 2018 15:45:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Item" table="item" catalog="figureitout" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="supplier" class="entities.Supplier" fetch="select">
+            <column name="SupplierID" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="Name" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" length="65535" />
+        </property>
+        <property name="price" type="java.lang.Integer">
+            <column name="Price" />
+        </property>
+        <property name="quantity" type="java.lang.Integer">
+            <column name="Quantity" />
+        </property>
+        <property name="priceModifier" type="java.lang.Integer">
+            <column name="PriceModifier" />
+        </property>
+        <property name="deleted" type="java.lang.Boolean">
+            <column name="Deleted" />
+        </property>
+        <property name="tag" type="string">
+            <column name="Tag" length="65535" />
+        </property>
+        <set name="categories" table="category_item" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="ItemID" not-null="true" />
+            </key>
+            <many-to-many entity-name="entities.Category">
+                <column name="CategoryID" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="comments" table="comment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ItemID" not-null="true" />
+            </key>
+            <one-to-many class="entities.Comment" />
+        </set>
+        <set name="ratings" table="rating" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ItemID" not-null="true" />
+            </key>
+            <one-to-many class="entities.Rating" />
+        </set>
+        <set name="lineorders" table="lineorder" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ItemID" not-null="true" />
+            </key>
+            <one-to-many class="entities.Lineorder" />
+        </set>
+        <set name="linestocks" table="linestock" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ItemID" not-null="true" />
+            </key>
+            <one-to-many class="entities.Linestock" />
+        </set>
+        <set name="linecarts" table="linecart" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ItemID" not-null="true" />
+            </key>
+            <one-to-many class="entities.Linecart" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 mars 2018 15:45:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Transaction" table="transaction" catalog="figureitout" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="orders" class="entities.Orders" fetch="select">
+            <column name="OrderID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="entities.User" fetch="select">
+            <column name="UserID" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

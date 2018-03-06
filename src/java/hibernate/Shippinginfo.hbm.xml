@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 mars 2018 15:45:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Shippinginfo" table="shippinginfo" catalog="figureitout" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="shippingPrice" type="java.lang.Integer">
+            <column name="ShippingPrice" />
+        </property>
+        <property name="carrier" type="string">
+            <column name="Carrier" />
+        </property>
+        <set name="orderses" table="orders" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ShippingInfoID" not-null="true" />
+            </key>
+            <one-to-many class="entities.Orders" />
+        </set>
+    </class>
+</hibernate-mapping>
