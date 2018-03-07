@@ -14,7 +14,7 @@ import entities.User;
  */
 public class LoginAction extends ActionSupport {
     private static final long serialVersionUID = 1L;    
-    UserDao dao = new UserDao();
+    UserDAO dao = new UserDAO();
     User user;
  
     @Override

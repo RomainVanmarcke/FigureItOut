@@ -10,5 +10,18 @@
             <result name="success">/hello.jsp</result>
             <result name="input">/index.jsp</result>
         </action>
+        <action name="saveOrUpdateUser" method="saveOrUpdate" class="actions.UserAction">
+            <result name="success" type="redirect">listUser</result>
+        </action>
+        <action name="listUser" method="list" class="actions.UserAction">
+            <result name="success">/users.jsp</result>
+        </action>
+        <action name="editUser" method="edit" class="actions.UserAction">
+            <result name="success">/users.jsp</result>
+        </action>
+        <action name="deleteUser" method="delete" class="actions.UserAction">
+            <result name="success" type="redirect">listUser</result>
+        </action>
+
     </package>
 </struts>

@@ -74,7 +74,7 @@
                         <div class="nav-collapse">
                             <ul class="nav">
                                 <li class=""><a href="index.jsp">Home	</a></li>
-                                <li class=""><a href="list-view.jsp">List View</a></li>
+                                <li class=""><a href="users.jsp">Users</a></li>
                                 <li class=""><a href="grid-view.jsp">Grid View</a></li>
 
                                 <li class=""><a href="four-col.jsp">Four Column</a></li>
