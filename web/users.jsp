@@ -39,6 +39,7 @@
                                 <th>FirstName</th>
                                 <th>Mail</th>
                                 <th>Role</th>
+                                <th>Password</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
@@ -48,7 +49,8 @@
                                     <td><s:property value="name" /></td>
                                     <td><s:property value="firstName" /></td>
                                     <td><s:property value="mail" /></td>
-                                    <td><s:property value="role" /></td>  
+                                    <td><s:property value="role" /></td>
+                                    <td><s:property value="auth" /></td>
                                     <td><s:url id="editURL" action="editUser">
                                             <s:param name="id" value="%{id}"></s:param>
                                         </s:url> <s:a href="%{editURL}">Edit</s:a></td>
