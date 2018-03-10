@@ -42,7 +42,7 @@
                                     <s:textfield id="itemQuantity" name="item.quantity" label="Quantity"></s:textfield>
                                     <s:textfield id="itemPm" name="item.priceModifier" label="priceModifier"></s:textfield>
                                     <s:textfield id="itemTag" name="item.tag" label="Tag"></s:textfield>
-                                    <s:select name="item.deleted" value="item.deleted" label="Deleted" list="#{'false':'false', 'true':'true'}" >
+                                    <s:select name="item.deleted" value="item.deleted" label="Deleted" list="{'false':'false', 'true':'true'}" >
 
                                     </s:select>
                                     <s:select name="item.supplier" value="item.supplier.id" label="select supplier" list="supplierList" listKey="id"  listValue="name">

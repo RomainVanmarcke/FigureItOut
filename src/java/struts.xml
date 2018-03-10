@@ -24,22 +24,21 @@
             <result name="success" type="redirect">listUser</result>
         </action>
      
-        <action name="ItemAction"   class="actions.ItemAction">
-            <result>/listItem.jsp</result>
-           
+     
+        <action name="ItemAction" class="actions.ItemAction">
+            <result>/listItem.jsp</result>      
         </action>
-    
-      
         <action name="saveOrUpdateItem" method="saveOrUpdateItem" class="actions.ItemAction">
             <result name="success" type="redirect">/ItemAction</result>
-             <result name="input">/ItemAction</result>
+            <result name="input">/ItemAction</result>
         </action>
-    
-      
         <action name="deleteItem" method="delete" class="actions.ItemAction">
             <result name="success" type="redirect">/ItemAction</result>
         </action>
       
      
+        <action name="OrdersAction" class="actions.OrdersAction">
+            <result>/orders.jsp</result>
+        </action>
     </package>
 </struts>
