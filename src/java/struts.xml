@@ -5,6 +5,7 @@
 <struts>
     <!--<include file="example.xml"/>-->
     <!-- Configuration for the default package. -->
+
     <package name="default" extends="struts-default">
         <action name="login" class="dao.LoginAction">
             <result name="success">/hello.jsp</result>
@@ -22,6 +23,23 @@
         <action name="deleteUser" method="delete" class="actions.UserAction">
             <result name="success" type="redirect">listUser</result>
         </action>
-
+     
+        <action name="ItemAction"   class="actions.ItemAction">
+            <result>/listItem.jsp</result>
+           
+        </action>
+    
+      
+        <action name="saveOrUpdateItem" method="saveOrUpdateItem" class="actions.ItemAction">
+            <result name="success" type="redirect">/ItemAction</result>
+             <result name="input">/ItemAction</result>
+        </action>
+    
+      
+        <action name="deleteItem" method="delete" class="actions.ItemAction">
+            <result name="success" type="redirect">/ItemAction</result>
+        </action>
+      
+     
     </package>
 </struts>
