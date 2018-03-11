@@ -9,9 +9,9 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import entities.Orders;
+import entities.Address;
 import entities.User;
-import dao.OrdersDAO;
+import dao.AddressDAO;
 import dao.UserDAO;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,52 +22,52 @@ import org.apache.struts2.ServletActionContext;
  *
  * @author adrien
  */
-public class FindOrdersAction {
+public class AddressAction {
     
-    private Orders orders = new Orders();
-    private List<Orders> ordersList = new ArrayList<Orders>();
-    private OrdersDAO ordersDAO = new OrdersDAO();
+    private Address address = new Address();
+    private List<Address> addressList = new ArrayList<Address>();
+    private AddressDAO addressDAO = new AddressDAO();
     private User user = new User();
     private UserDAO userDAO = new UserDAO();
     
     public String execute()throws Exception{
-        ordersList = ordersDAO.findOrdersByDate(orders.getDate());
+        addressList = addressDAO.listAddress();
         return SUCCESS;
     }
     
     public String findByUser()throws Exception{
-        User ordersOwner = userDAO.findUserById(orders.getUser().getId()).get(0);
-        ordersList = ordersDAO.findOrdersByUser(ordersOwner);
+        User addressOwner = userDAO.findUserById(address.getUser().getId()).get(0);
+        addressList = addressDAO.findAddressByUser(addressOwner);
         return SUCCESS;
     }
     
-    public Orders getModel() {
-        return orders;
+    public Address getModel() {
+        return address;
     }
-
+    
     public String saveOrUpdate() {
-        ordersDAO.saveOrUpdateOrders(orders);
+        addressDAO.saveOrUpdateAddress(address);
         return SUCCESS;
     }
 
     public String list() {
-        ordersList = ordersDAO.listOrders();
+        addressList = addressDAO.listAddress();
         return SUCCESS;
     }
 
-    public Orders getOrders() {
-        return orders;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setOrders(Orders orders) {
-        this.orders = orders;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public List<Orders> getOrdersList() {
-        return ordersList;
+    public List<Address> getAddressList() {
+        return addressList;
     }
 
-    public void setOrdersList(List<Orders> ordersList) {
-        this.ordersList = ordersList;
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
     }
 }

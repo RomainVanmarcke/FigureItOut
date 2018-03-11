@@ -105,38 +105,40 @@
                     </div>
 
                     <div class="well">
-                        <form class="form-horizontal" >
-                            <h3>Your Billing Details</h3>
+                        <s:form action="saveOrUpdateAddress" class="form-horizontal" >
+                            <h3>Your Address</h3>
+                            <s:hidden name="address.user.id" type="hidden"  value="1"></s:hidden>
                             <div class="control-group">
-                                <label class="control-label">Fiels label <sup>*</sup></label>
                                 <div class="controls">
-                                    <input type="text" placeholder=" Field name">
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">Fiels label <sup>*</sup></label>
-                                <div class="controls">
-                                    <input type="text" placeholder=" Field name">
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">Fiels label <sup>*</sup></label>
-                                <div class="controls">
-                                    <input type="text" placeholder=" Field name">
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">Fiels label <sup>*</sup></label>
-                                <div class="controls">
-                                    <textarea></textarea>
+                                    <s:textfield name="address.line1" placeholder=" Line 1"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <div class="controls">
-                                    <input type="submit" name="submitAccount" value="Register" class="shopBtn exclusive">
+                                    <s:textfield name="address.line2" placeholder=" Line 2"/>
                                 </div>
                             </div>
-                        </form>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <s:textfield name="address.zipCode" placeholder=" Zipcode"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <s:textfield name="address.city" placeholder=" City"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <s:textfield name="address.country" placeholder=" Country"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <s:submit class="shopBtn exclusive"/>
+                                </div>
+                            </div>
+                        </s:form>
                     </div>
 
 
