@@ -8,11 +8,15 @@ package actions;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import dao.CategoryDAO;
 import entities.Item;
 import dao.ItemDAO;
 import dao.SupplierDAO;
+import entities.Category;
 import entities.Supplier;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
@@ -29,7 +33,8 @@ public class ItemAction extends ActionSupport implements ModelDriven<Item> {
     private Supplier supplier = new Supplier();
     private List<Supplier> supplierList;
     private SupplierDAO supplierDAO = new SupplierDAO();
-    
+    private List<Category> categoryList;
+    private CategoryDAO categoryDAO = new CategoryDAO();
     
     
     public String execute()throws Exception{
@@ -57,6 +62,8 @@ public class ItemAction extends ActionSupport implements ModelDriven<Item> {
         setItemList();
         supplierList= new ArrayList<Supplier>();
         setSupplierList();
+        categoryList=new ArrayList<Category>();
+        setCategoryList();
       return SUCCESS;
     }
     public Item getModel() {
@@ -71,19 +78,17 @@ public class ItemAction extends ActionSupport implements ModelDriven<Item> {
     public String saveOrUpdateItem() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext()
                                   .get(ServletActionContext.HTTP_REQUEST);
-        if(item.getId()==null){
-        item.setName(request.getParameter("item.name")); 
-        item.setDescription(request.getParameter("item.description")); 
-        item.setQuantity(Integer.parseInt(request.getParameter("item.quantity"))); 
-        item.setPrice(Integer.parseInt(request.getParameter("item.price"))); 
-        item.setPriceModifier(Integer.parseInt(request.getParameter("item.priceModifier"))); 
-        item.setTag(request.getParameter("item.tag")); 
-        }
+       
+        
+        
+        
         Integer idsupp=Integer.parseInt(request.getParameter("supp"));
         Supplier sup = supplierDAO.listSupplierById(idsupp);
         item.setSupplier(sup);
-        
-        itemDAO.saveOrUpdateItem(item); 
+        String[] catString=request.getParameterValues("cat");
+        List<Category> list = categoryDAO.findAll(catString);
+        item.setCategories(new HashSet(list));
+        itemDAO.saveOrUpdateItem(item);  
         return SUCCESS;
     }
     
@@ -140,5 +145,11 @@ public class ItemAction extends ActionSupport implements ModelDriven<Item> {
     }
     public List getSupplierList(){
         return supplierList;
+    }
+    public void setCategoryList(){
+       categoryList=categoryDAO.listItem();
+    }
+    public List getCategoryList(){
+        return categoryList;
     }
 }

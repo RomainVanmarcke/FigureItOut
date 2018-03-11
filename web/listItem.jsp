@@ -101,17 +101,19 @@
 
                                 <s:form action="saveOrUpdateItem">
                                     <s:hidden  name="Item.id" type="hidden"  ></s:hidden>
-                                    <s:textfield id="itemName" name="Item.name" label="Name"></s:textfield>
-                                    <s:textfield id="itemDesc" name="Item.description" label="Description"></s:textfield>
-                                    <s:textfield id="itemPrice"name="Item.price" label="Price"></s:textfield>
-                                    <s:textfield id="itemQuantity" name="Item.quantity" label="Quantity"></s:textfield>
-                                    <s:textfield id="itemPm" name="Item.priceModifier" label="priceModifier"></s:textfield>
-                                    <s:textfield id="itemTag" name="Item.tag" label="Tag"></s:textfield>
+                                    <s:textfield id="itemName" name="item.name" label="Name"></s:textfield>
+                                    <s:textfield id="itemDesc" name="item.description" label="Description"></s:textfield>
+                                    <s:textfield id="itemPrice"name="item.price" label="Price"></s:textfield>
+                                    <s:textfield id="itemQuantity" name="item.quantity" label="Quantity"></s:textfield>
+                                    <s:textfield id="itemPm" name="item.priceModifier" label="priceModifier"></s:textfield>
+                                    <s:textfield id="itemTag" name="item.tag" label="Tag"></s:textfield>
                                    
                                     <s:select name="supp" value="Item.supplier.id" label="select supplier" list="supplierList" listKey="id"  listValue="name">
 
                                     </s:select>
+                                    <s:select name="cat" multiple="true" label="select supplier" list="categoryList" listKey="id"  listValue="name">
 
+                                    </s:select>
                                     <s:submit value="Add"></s:submit>
 
                                 </s:form>
