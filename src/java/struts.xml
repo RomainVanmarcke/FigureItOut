@@ -40,7 +40,10 @@
         <action name="listOrders" class="actions.ListOrdersAction">
             <result>/listOrders.jsp</result>
         </action>
-        <action name="findOrders" class="actions.FindOrdersAction">
+        <action name="findOrdersByDate" class="actions.FindOrdersAction">
+            <result name="success">/resultOrders.jsp</result>
+        </action>
+        <action name="findOrdersByUser" method="findByUser" class="actions.FindOrdersAction">
             <result name="success">/resultOrders.jsp</result>
         </action>
 

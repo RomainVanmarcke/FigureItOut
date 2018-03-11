@@ -28,8 +28,13 @@
             <div class="row">
                 <%@ include file="sidebar.jsp" %>
                 
-                <s:form action="findOrders">
+                <s:form action="findOrdersByDate">
                     <s:textfield name="orders.date" label="Date" />
+                    <s:submit />
+                </s:form>
+                
+                <s:form action="findOrdersByUser">
+                    <s:textfield name="orders.user.id" label="User Id" />
                     <s:submit />
                 </s:form>
                 
@@ -49,27 +54,13 @@
                                 <s:iterator value="ordersList">
                                     <tr>
                                         <td><s:property value="[0]['id']" /></td>
-                                        <td><s:property value="[0]['address']" /></td>
-                                        <td><s:property value="[0]['shippinginfo']" /></td>
-                                        <td><s:property value="[0]['user']" /></td>
+                                        <td><s:property value="[0]['address']['line1']" /></td>
+                                        <td><s:property value="[0]['shippinginfo']['carrier']" /></td>
+                                        <td><s:property value="[0]['user']['name']" /></td>
                                         <td><s:property value="[0]['date']" /></td>
                                         <td><s:property value="[0]['status']" /></td>
                                         <td> 
-                                            <s:form action="deleteOrders">
-                                                <s:textfield name="Orders.id" type="hidden" value = "%{[0]['id']}"></s:textfield>
-                                                <s:submit value="Delete"></s:submit>
-                                            </s:form>
                                         </td>
-                                            <s:form action="listOrders">
-                                            <s:hidden id="ordersIdU" name="Orders.id" type="hidden"  value = "%{[0]['id']}"></s:hidden>
-                                            <s:hidden id="ordersAddressU" name="Orders.address" type="hidden"  value = "%{[0]['address']}"></s:hidden>
-                                            <s:hidden id="ordersShipU" name="Orders.shippinginfo" type="hidden" value = "%{[0]['shippinginfo']}"></s:hidden>
-                                            <s:hidden id="ordersUserU" name="Orders.user" type="hidden" value = "%{[0]['user']}"></s:hidden>
-                                            <s:hidden id="ordersDateU" name="Orders.date" type="hidden"  value = "%{[0]['date']}"></s:hidden>
-                                            <s:hidden id="ordersStatusU" name="Orders.status" type="hidden" value = "%{[0]['status']}"></s:hidden>
-
-                                            <s:submit value="update"></s:submit>
-                                        </s:form></td>
                                     </tr>
                                 </s:iterator>
                             </tbody>

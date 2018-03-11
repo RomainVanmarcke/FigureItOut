@@ -10,6 +10,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import entities.Orders;
+import entities.User;
 import org.hibernate.Transaction;
 
 /**
@@ -21,13 +22,23 @@ public class OrdersDAO {
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = session.beginTransaction();
 
-    public List<Orders> findOrders(String date) {
+    public List<Orders> findOrdersByDate(String date) {
         String sql = " from Orders o where o.date=:date";
-        System.out.print(sql);
         Query query = session.createQuery(sql);
-        System.out.print(query);
         query.setParameter("date", date);
-        System.out.print(query);
+        List<Orders> list = query.list();
+        if (list.size() > 0) {
+            session.close();
+            return list;
+        }
+        session.close();
+        return null;
+    }
+    
+    public List<Orders> findOrdersByUser(User user) {
+        String sql = " from Orders o where o.user=:user";
+        Query query = session.createQuery(sql);
+        query.setParameter("user", user);
         List<Orders> list = query.list();
         if (list.size() > 0) {
             session.close();

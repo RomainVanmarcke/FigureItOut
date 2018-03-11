@@ -34,6 +34,19 @@ public class UserDAO {
         session.close();
         return false;
     }
+    
+    public List<User> findUserById(Integer id) {
+        String sql = " from User u where u.id=:id";
+        Query query = session.createQuery(sql);
+        query.setParameter("id", id);
+        List<User> list = query.list();
+        if (list.size() > 0) {
+            session.close();
+            return list;
+        }
+        session.close();
+        return null;
+    }
 
     public List<User> listUser() {
         List<User> users = null;

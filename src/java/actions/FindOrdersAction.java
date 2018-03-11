@@ -10,7 +10,9 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import entities.Orders;
+import entities.User;
 import dao.OrdersDAO;
+import dao.UserDAO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -25,9 +27,17 @@ public class FindOrdersAction {
     private Orders orders = new Orders();
     private List<Orders> ordersList = new ArrayList<Orders>();
     private OrdersDAO ordersDAO = new OrdersDAO();
+    private User user = new User();
+    private UserDAO userDAO = new UserDAO();
     
     public String execute()throws Exception{
-        ordersList = ordersDAO.findOrders(orders.getDate());
+        ordersList = ordersDAO.findOrdersByDate(orders.getDate());
+        return SUCCESS;
+    }
+    
+    public String findByUser()throws Exception{
+        User ordersOwner = userDAO.findUserById(orders.getUser().getId()).get(0);
+        ordersList = ordersDAO.findOrdersByUser(ordersOwner);
         return SUCCESS;
     }
     
