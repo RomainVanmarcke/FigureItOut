@@ -21,18 +21,20 @@ public class OrdersDAO {
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = session.beginTransaction();
 
-    public boolean find(String name, String firstName) {
-        String sql = " from Orders o where o.name=:name and o.firstName=:firstName";
+    public List<Orders> findOrders(String date) {
+        String sql = " from Orders o where o.date=:date";
+        System.out.print(sql);
         Query query = session.createQuery(sql);
-        query.setParameter("name", name);
-        query.setParameter("firstName", firstName);
+        System.out.print(query);
+        query.setParameter("date", date);
+        System.out.print(query);
         List<Orders> list = query.list();
         if (list.size() > 0) {
             session.close();
-            return true;
+            return list;
         }
         session.close();
-        return false;
+        return null;
     }
 
     public List<Orders> listOrders() {

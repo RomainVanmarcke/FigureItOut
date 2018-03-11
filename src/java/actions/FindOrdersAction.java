@@ -20,14 +20,14 @@ import org.apache.struts2.ServletActionContext;
  *
  * @author adrien
  */
-public class OrdersAction {
+public class FindOrdersAction {
     
     private Orders orders = new Orders();
     private List<Orders> ordersList = new ArrayList<Orders>();
     private OrdersDAO ordersDAO = new OrdersDAO();
     
     public String execute()throws Exception{
-        list();
+        ordersList = ordersDAO.findOrders(orders.getDate());
         return SUCCESS;
     }
     

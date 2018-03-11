@@ -37,8 +37,12 @@
         </action>
       
      
-        <action name="OrdersAction" class="actions.OrdersAction">
-            <result>/orders.jsp</result>
+        <action name="listOrders" class="actions.ListOrdersAction">
+            <result>/listOrders.jsp</result>
         </action>
+        <action name="findOrders" class="actions.FindOrdersAction">
+            <result name="success">/resultOrders.jsp</result>
+        </action>
+
     </package>
 </struts>
