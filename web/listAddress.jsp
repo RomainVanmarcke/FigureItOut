@@ -40,8 +40,6 @@
                                         <td><s:property value="[0]['zipCode']" /></td>
                                         <td><s:property value="[0]['city']" /></td>
                                         <td><s:property value="[0]['country']" /></td>
-                                        <td> 
-                                        </td>
                                     </tr>
                                 </s:iterator>
                             </tbody>

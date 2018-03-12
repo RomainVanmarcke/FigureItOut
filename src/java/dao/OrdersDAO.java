@@ -28,7 +28,7 @@ public class OrdersDAO {
         query.setParameter("date", date);
         List<Orders> list = query.list();
         if (list.size() > 0) {
-            session.close();
+            //session.close();
             return list;
         }
         session.close();
@@ -41,7 +41,10 @@ public class OrdersDAO {
         query.setParameter("user", user);
         List<Orders> list = query.list();
         if (list.size() > 0) {
-            session.close();
+            /*list.forEach((a) -> {
+                a.setUser(user);
+            });*/
+            //session.close();
             return list;
         }
         session.close();

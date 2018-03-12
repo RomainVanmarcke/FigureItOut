@@ -52,8 +52,6 @@
                                             <td><s:property value="[0]['user']['name']" /></td>
                                             <td><s:property value="[0]['date']" /></td>
                                             <td><s:property value="[0]['status']" /></td>
-                                            <td> 
-                                            </td>
                                         </tr>
                                     </s:iterator>
                                 </tbody>
@@ -67,7 +65,7 @@
 
                         <s:form action="findAddressByUser">
                             <s:textfield name="address.user.id" label="User Id" />
-                            <s:submit value="research" class="shopBtn btn-large"/>
+                            <s:submit value="research"/>
                         </s:form>
                         
                         <div>
@@ -91,8 +89,6 @@
                                             <td><s:property value="[0]['zipCode']" /></td>
                                             <td><s:property value="[0]['city']" /></td>
                                             <td><s:property value="[0]['country']" /></td>
-                                            <td> 
-                                            </td>
                                         </tr>
                                     </s:iterator>
                                 </tbody>
