@@ -58,5 +58,10 @@
             <result name="success" type="redirect">/listAddress</result>
         </action>
         
+        
+        <action name="LineCartAction" class="actions.LineCartAction">
+            <result>/cart.jsp</result>      
+        </action>
+        
     </package>
 </struts>

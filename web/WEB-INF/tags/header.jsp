@@ -45,7 +45,7 @@
                         <a href="#"><span class="icon-user"></span> My Account</a> 
                         <a href="register.jsp"><span class="icon-edit"></span> Free Register </a> 
                         <a href="contact.jsp"><span class="icon-envelope"></span> Contact us</a>
-                        <a href="cart.jsp"><span class="icon-shopping-cart"></span> 2 Item(s) - <span class="badge badge-warning"> $448.42</span></a>
+                        <a href="LineCartAction"><span class="icon-shopping-cart"></span> 2 Item(s) - <span class="badge badge-warning"> $448.42</span></a>
                     </div>
                 </div>
             </div>
