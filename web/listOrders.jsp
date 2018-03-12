@@ -15,22 +15,12 @@
         </jsp:attribute>
 
         <jsp:body>
-            <style type="text/css">
-                .error { border: 5px solid red; }
-            </style>
 
-            <s.if test="hasFieldErrors()">
-            <div class="error">
-                <s.fielderror />
-                <s:actionerror/>
-            </div>
-            </s.if>
             <div class="row">
-                <%@ include file="sidebar.jsp" %>  
-                <div class="span9">	
+                <div class="span12">	
 
-                    <div class="row">
-                        <table>
+                    <div class="well">
+                        <table class="table table-bordered table-condensed">
                             <thead>
                             <td>Id</td>
                             <td>Address</td>

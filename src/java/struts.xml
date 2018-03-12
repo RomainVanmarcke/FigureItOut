@@ -52,7 +52,7 @@
             <result>/listAddress.jsp</result>
         </action>
         <action name="findAddressByUser" method="findByUser" class="actions.AddressAction">
-            <result name="success">/listAddress.jsp</result>
+            <result name="success">/account.jsp</result>
         </action>
         <action name="saveOrUpdateAddress" method="saveOrUpdate" class="actions.AddressAction">
             <result name="success" type="redirect">/listAddress</result>
