@@ -22,7 +22,7 @@ import org.apache.struts2.ServletActionContext;
  *
  * @author adrien
  */
-public class FindOrdersAction {
+public class OrdersAction {
     
     private Orders orders = new Orders();
     private List<Orders> ordersList = new ArrayList<Orders>();
@@ -31,13 +31,18 @@ public class FindOrdersAction {
     private UserDAO userDAO = new UserDAO();
     
     public String execute()throws Exception{
-        ordersList = ordersDAO.findOrdersByDate(orders.getDate());
+        list();
         return SUCCESS;
     }
     
     public String findByUser()throws Exception{
         User ordersOwner = userDAO.findUserById(orders.getUser().getId()).get(0);
         ordersList = ordersDAO.findOrdersByUser(ordersOwner);
+        return SUCCESS;
+    }
+    
+    public String findByDate()throws Exception{
+        ordersList = ordersDAO.findOrdersByDate(orders.getDate());
         return SUCCESS;
     }
     
@@ -59,7 +64,7 @@ public class FindOrdersAction {
         return orders;
     }
 
-    public void setOrders(Orders orders) {
+    public void setUser(Orders orders) {
         this.orders = orders;
     }
 

@@ -37,14 +37,14 @@
         </action>
       
      
-        <action name="listOrders" class="actions.ListOrdersAction">
+        <action name="listOrders" class="actions.OrdersAction">
             <result>/listOrders.jsp</result>
         </action>
-        <action name="findOrdersByDate" class="actions.FindOrdersAction">
-            <result name="success">/resultOrders.jsp</result>
+        <action name="findOrdersByDate" method="findByDate" class="actions.OrdersAction">
+            <result name="success">/account.jsp</result>
         </action>
-        <action name="findOrdersByUser" method="findByUser" class="actions.FindOrdersAction">
-            <result name="success">/resultOrders.jsp</result>
+        <action name="findOrdersByUser" method="findByUser" class="actions.OrdersAction">
+            <result name="success">/account.jsp</result>
         </action>
 
 
