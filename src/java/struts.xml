@@ -84,6 +84,12 @@
         <action name="deleteLinecart" method="delete" class="actions.LineCartAction">
             <result name="success" type="redirect">/LineCartAction</result>     
         </action>
+        <action name="updateQuantityLinecart" method="updateQuantity" class="actions.LineCartAction">
+            <result name="success" type="redirect">/LineCartAction</result>     
+        </action>
+        
+        
+        
         
         
         

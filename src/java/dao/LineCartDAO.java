@@ -80,4 +80,16 @@ public class LineCartDAO {
             e.printStackTrace();
         }
     }
+    
+        public void updateQuantityLinecart(Integer linecartID, int quantity) {
+        try {
+            Linecart linecart = (Linecart) session.get(Linecart.class, linecartID);
+            linecart.setQuantity(quantity);
+            session.update(linecart);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            transaction.rollback();
+            e.printStackTrace();
+        }
+    }
 }

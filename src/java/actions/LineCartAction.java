@@ -88,4 +88,13 @@ public class LineCartAction {
         linecartDAO.deleteLinecart(linecartID);
         return SUCCESS;
     }
+    
+        public String updateQuantity() {
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
+        int linecartID = Integer.parseInt(request.getParameter("Linecart.id"));
+        int linecartNewQuantity = Integer.parseInt(request.getParameter("Linecart.newQuantity"));
+        System.out.println("IDDDDDDDD: " + linecartID);
+        linecartDAO.updateQuantityLinecart(linecartID, linecartNewQuantity);
+        return SUCCESS;
+    }
 }

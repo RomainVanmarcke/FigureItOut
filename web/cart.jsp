@@ -41,16 +41,30 @@
                                     <td><img width="100" src="assets/img/e.jpg" alt=""></td>
                                     <td><s:property value="[0]['item']['name']" /></td>
                                     <td><s:property value="[0]['price']" /></td>
+                                    <!--
                                     <td>
                                         <input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value=<s:property value="[0]['quantity']" />>
                                         <div class="input-append">
-                                            <button class="btn btn-mini" type="button">-</button><button class="btn btn-mini" type="button"> + </button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
+                                            <button onClick="decrementValue()" class="btn btn-mini" type="button">-</button><button onclick="incrementValue()" class="btn btn-mini" type="button"> + </button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
                                         </div>
+                                        
+                                    </td>
+                                    -->
+                                    <td>
+                                        <s:form action="updateQuantityLinecart">
+
+                                            <s:textfield name="Linecart.id" type="hidden" value = "%{[0]['id']}"></s:textfield>
+                                            <s:textfield name="Linecart.newQuantity" value = "%{[0]['quantity']}"></s:textfield>
+                                            <s:submit value="Update quantity"></s:submit>
+                                            
+                                        </s:form>
+                                    </td>
+                                    <td>
                                         <s:form action="deleteLinecart">
 
                                             <s:textfield name="Linecart.id" type="hidden" value = "%{[0]['id']}"></s:textfield>
-                                            <s:submit value="Delete"></s:submit>
-
+                                            <s:submit value="Delete from cart"></s:submit>
+                                            
                                         </s:form>
                                     </td>
                                     
@@ -84,3 +98,20 @@
     -->
     Body Section 
     -->
+    <script>
+        function incrementValue()
+        {
+            var value = parseInt(document.getElementById('appendedInputButtons').value, 10);
+            value = isNaN(value) ? 0 : value;
+            value++;
+            document.getElementById('appendedInputButtons').value = value;
+        }
+        function decrementValue()
+        {
+            var value = parseInt(document.getElementById('appendedInputButtons').value, 10);
+            value = isNaN(value) ? 0 : value;
+            value--;
+            document.getElementById('appendedInputButtons').value = value;
+        }
+    </script>
+</html>
