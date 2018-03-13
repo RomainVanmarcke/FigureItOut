@@ -47,6 +47,7 @@
                             <td>Supplier</td>
                             <td>Tags</td>
                             <td>Deleted</td>
+                            <td>Categories</td>
                             <td>Update/Delete</td>
                             </thead>
                             <tbody>
@@ -62,6 +63,12 @@
                                         <td><s:property value="[0]['supplier']['name']" /></td>
                                         <td><s:property value="[0]['tag']" /></td>
                                         <td><s:property value="[0]['deleted']" /></td>
+                                        <td>
+                                            <s:iterator value="%{[0]['categories']}">
+                                           
+                                            <s:property value="[0]['name']" />
+                                            </s:iterator>   
+                                        </td>
                                         <td> 
                                             <s:form action="deleteItem">
 
@@ -82,8 +89,10 @@
                                             <s:hidden id="itemPmU" name="Item.priceModifier" type="hidden" value = "%{[0]['priceModifier']}"></s:hidden>
                                             <s:hidden id="itemTagU" name="Item.tag" type="hidden"  value = "%{[0]['tag']}"></s:hidden>
                                             <s:hidden id="itemTagU" name="Item.deletedU" type="hidden"  value = "%{[0]['deleted']}"></s:hidden>
-                                            <s:hidden id="itemTagU" name="Item.supp" type="hidden"  value="%{[0]['supplier']['id']}" ></s:hidden>
-
+                                            <s:hidden id="itemTagU" name="supp" type="hidden"  value="%{[0]['supplier']['id']}" ></s:hidden>
+                                            <s:iterator value="%{[0]['categories']}">
+                                                 <s:hidden id="itemTagU" name="cat" type="hidden"  value="%{[0]['id']}" ></s:hidden>
+                                            </s:iterator>   
                                             <s:submit value="update"></s:submit>
 
                                         </s:form></td>
@@ -108,10 +117,10 @@
                                     <s:textfield id="itemPm" name="item.priceModifier" label="priceModifier"></s:textfield>
                                     <s:textfield id="itemTag" name="item.tag" label="Tag"></s:textfield>
                                    
-                                    <s:select name="supp" value="Item.supplier.id" label="select supplier" list="supplierList" listKey="id"  listValue="name">
+                                    <s:select name="supp" value="item.supplier.id" label="select supplier" list="supplierList" listKey="id"  listValue="name">
 
                                     </s:select>
-                                    <s:select name="cat" multiple="true" label="select supplier" list="categoryList" listKey="id"  listValue="name">
+                                    <s:select name="cat" multiple="true"   label="select supplier" list="categoryList" listKey="id"  listValue="name" value="ItemCategoriesList" >
 
                                     </s:select>
                                     <s:submit value="Add"></s:submit>

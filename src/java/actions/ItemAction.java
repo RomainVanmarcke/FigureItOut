@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
@@ -35,37 +36,30 @@ public class ItemAction extends ActionSupport implements ModelDriven<Item> {
     private SupplierDAO supplierDAO = new SupplierDAO();
     private List<Category> categoryList;
     private CategoryDAO categoryDAO = new CategoryDAO();
-    
-    
-    public String execute()throws Exception{
-           //setItemList();
-         item = new Item();
+
+    public String execute() throws Exception {
+        //setItemList();
+      
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext()
                 .get(ServletActionContext.HTTP_REQUEST);
-        if(request.getParameter("Item.name")!=null) {
-        item.setId(Integer.parseInt(request.getParameter("Item.id")));
-        item.setName(request.getParameter("Item.name"));
-        item.setDescription(request.getParameter("Item.description"));
-        item.setQuantity(Integer.parseInt(request.getParameter("Item.quantity")));
-        item.setPrice(Integer.parseInt(request.getParameter("Item.price")));
-        item.setPriceModifier(Integer.parseInt(request.getParameter("Item.priceModifier")));
-        item.setTag(request.getParameter("Item.tag"));
-        System.out.print("test"+request.getParameter("Item.deletedU"));
-        Boolean b = Boolean.parseBoolean(request.getParameter("Item.deletedU"));
-        item.setDeleted(b);
-        Integer idsupp = Integer.parseInt(request.getParameter("Item.supp"));
-        Supplier sup = supplierDAO.listSupplierById(idsupp);
-        item.setSupplier(sup);
-        setItem(item);
+        if (request.getParameter("Item.name") != null) {
+
+            Integer idsupp = Integer.parseInt(request.getParameter("supp"));
+            Supplier sup = supplierDAO.listSupplierById(idsupp);
+            item.setSupplier(sup);
+             String[] catString = request.getParameterValues("cat");
+        List<Category> list = categoryDAO.findAll(catString);
+        item.setCategories(new HashSet(list));
         }
-        itemList= new ArrayList<Item>();
+        itemList = new ArrayList<Item>();
         setItemList();
-        supplierList= new ArrayList<Supplier>();
+        supplierList = new ArrayList<Supplier>();
         setSupplierList();
-        categoryList=new ArrayList<Category>();
+        categoryList = new ArrayList<Category>();
         setCategoryList();
-      return SUCCESS;
+        return SUCCESS;
     }
+
     public Item getModel() {
         return item;
     }
@@ -77,29 +71,25 @@ public class ItemAction extends ActionSupport implements ModelDriven<Item> {
      */
     public String saveOrUpdateItem() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext()
-                                  .get(ServletActionContext.HTTP_REQUEST);
-       
-        
-        
-        
-        Integer idsupp=Integer.parseInt(request.getParameter("supp"));
+                .get(ServletActionContext.HTTP_REQUEST);
+
+        Integer idsupp = Integer.parseInt(request.getParameter("supp"));
         Supplier sup = supplierDAO.listSupplierById(idsupp);
         item.setSupplier(sup);
-        String[] catString=request.getParameterValues("cat");
+        String[] catString = request.getParameterValues("cat");
         List<Category> list = categoryDAO.findAll(catString);
         item.setCategories(new HashSet(list));
-        itemDAO.saveOrUpdateItem(item);  
+        itemDAO.saveOrUpdateItem(item);
         return SUCCESS;
     }
-    
-    
+
     /**
      * To list all users.
      *
      * @return String
      */
     public String list() {
-        
+
         //itemList = itemDAO.listItem();
         return SUCCESS;
     }
@@ -111,7 +101,7 @@ public class ItemAction extends ActionSupport implements ModelDriven<Item> {
      */
     public String delete() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
-        int iditem=Integer.parseInt(request.getParameter("Item.id"));
+        int iditem = Integer.parseInt(request.getParameter("Item.id"));
         itemDAO.deleteItem(iditem);
         return SUCCESS;
     }
@@ -130,26 +120,40 @@ public class ItemAction extends ActionSupport implements ModelDriven<Item> {
     public Item getItem() {
         return item;
     }
+
     public void setItem(Item item) {
         this.item = item;
     }
 
-    public void setItemList(){
-       itemList=itemDAO.listItem();
+    public void setItemList() {
+        itemList = itemDAO.listItem();
     }
-    public List getItemList(){
+
+    public List getItemList() {
         return itemList;
     }
-    public void setSupplierList(){
-       supplierList=supplierDAO.listSupplier();
+
+    public void setSupplierList() {
+        supplierList = supplierDAO.listSupplier();
     }
-    public List getSupplierList(){
+
+    public List getSupplierList() {
         return supplierList;
     }
-    public void setCategoryList(){
-       categoryList=categoryDAO.listItem();
+
+    public void setCategoryList() {
+        categoryList = categoryDAO.listItem();
     }
-    public List getCategoryList(){
+
+    public List getCategoryList() {
         return categoryList;
     }
+    public List getItemCategoriesList() {
+        List<Integer> list = new ArrayList();
+        for(Category cat : item.getCategories()){
+            list.add(cat.getId());
+        }
+        return list;
+    }
+     
 }
