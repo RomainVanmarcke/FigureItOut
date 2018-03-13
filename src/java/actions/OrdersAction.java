@@ -36,7 +36,7 @@ public class OrdersAction {
     }
     
     public String findByUser()throws Exception{
-        User ordersOwner = userDAO.findUserById(orders.getUser().getId()).get(0);
+        User ordersOwner = userDAO.findUserById(orders.getUser().getId());
         ordersList = ordersDAO.findOrdersByUser(ordersOwner);
         return SUCCESS;
     }

@@ -36,7 +36,7 @@ public class AddressAction {
     }
     
     public String findByUser()throws Exception{
-        User addressOwner = userDAO.findUserById(address.getUser().getId()).get(0);
+        User addressOwner = userDAO.findUserById(address.getUser().getId());
         addressList = addressDAO.findAddressByUser(addressOwner);
         return SUCCESS;
     }

@@ -7,14 +7,30 @@
     <!-- Configuration for the default package. -->
 
     <package name="default" extends="struts-default">
-        <action name="login" class="dao.LoginAction">
-            <result name="success">/hello.jsp</result>
-            <result name="input">/index.jsp</result>
+        <interceptors>
+            <interceptor class="actions.LoginInterceptor" name="loginInterceptor"></interceptor>
+            <interceptor-stack name="loginStack">
+                <interceptor-ref name="loginInterceptor"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        
+        <global-results>
+            <result name="loginUser">/login.jsp</result>
+        </global-results>
+
+        <action name="loginUser" method="login" class="actions.LoginAction">
+            <result name="success">/index.jsp</result>
+            <result name="input">/login.jsp</result>
+        </action>
+        <action name="logoutUser" method="logout" class="actions.LoginAction">
+            <result name="success">/index.jsp</result>
         </action>
         <action name="saveOrUpdateUser" method="saveOrUpdate" class="actions.UserAction">
             <result name="success" type="redirect">listUser</result>
         </action>
         <action name="listUser" method="list" class="actions.UserAction">
+            <interceptor-ref name="loginStack"></interceptor-ref>
             <result name="success">/users.jsp</result>
         </action>
         <action name="editUser" method="edit" class="actions.UserAction">
@@ -22,6 +38,9 @@
         </action>
         <action name="deleteUser" method="delete" class="actions.UserAction">
             <result name="success" type="redirect">listUser</result>
+        </action>
+        <action name="findUserById" method="findById" class="actions.UserAction">
+            <result name="success">/users.jsp</result>
         </action>
      
      

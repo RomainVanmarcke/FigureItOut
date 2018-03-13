@@ -21,31 +21,27 @@ public class UserDAO {
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = session.beginTransaction();
 
-    public boolean find(String name, String firstName) {
+    public User checkCredentials(String name, String firstName) {
         String sql = " from User u where u.name=:name and u.firstName=:firstName";
         Query query = session.createQuery(sql);
         query.setParameter("name", name);
         query.setParameter("firstName", firstName);
         List<User> list = query.list();
         if (list.size() > 0) {
-            session.close();
-            return true;
+            return list.get(0);
         }
-        session.close();
-        return false;
+        return null;
     }
     
-    public List<User> findUserById(Integer id) {
-        String sql = " from User u where u.id=:id";
-        Query query = session.createQuery(sql);
-        query.setParameter("id", id);
-        List<User> list = query.list();
-        if (list.size() > 0) {
-            session.close();
-            return list;
+    public User findUserById(Integer id) {
+        User user = null;
+        try {
+            user = (User) session.get(User.class, id);
+//            System.out.println(user.getAuth().getPassword());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        session.close();
-        return null;
+        return user;
     }
 
     public List<User> listUser() {
@@ -77,13 +73,4 @@ public class UserDAO {
         }
     }
 
-    public User listUserById(long userId) {
-        User user = null;
-        try {
-            user = (User) session.get(User.class, userId);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return user;
-    }
 }

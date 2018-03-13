@@ -85,10 +85,21 @@
                             </form>
                             <ul class="nav pull-right">
                                 <li class="dropdown">
-                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
+                                    <s:if test="#session.userName != null">
+                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> <s:property value="#session.userName"></s:property> <b class="caret"></b></a>
                                     <div class="dropdown-menu">
+                                        
+                                        <s:form action="logoutUser">
+                                         <s:submit value="Logout"></s:submit>
 
-                                        <s:form action="login">
+                                        </s:form>
+                                    </div>
+                                    </s:if>
+                                    <s:else>
+                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
+                                    <div class="dropdown-menu">
+                                        
+                                        <s:form action="loginUser">
                                             <s:textfield name="user.name" label="Username"></s:textfield>
                                             <s:password name="user.firstName" label="FirstName"></s:password>
                                             <s:submit value="Login"></s:submit>
@@ -98,6 +109,8 @@
                                         <p style="color: red;"><s:property value="msg"></s:property></p>
 
                                     </div>
+                                    </s:else>
+                                    
                                 </li>
                             </ul>
                         </div>

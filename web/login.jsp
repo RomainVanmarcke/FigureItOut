@@ -49,7 +49,7 @@
                                 <h5>ALREADY REGISTERED ?</h5>
 
                                 <s:actionerror/>
-                                <s:form action="login">
+                                <s:form action="loginUser">
                                     <s:textfield name="user.name" label="Name"></s:textfield>
                                     <s:password name="user.firstName" label="FirstName"></s:password>
                                     <s:submit value="Login"></s:submit>
