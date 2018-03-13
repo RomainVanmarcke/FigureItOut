@@ -5,6 +5,7 @@
  */
 package dao;
 
+import entities.Item;
 import hibernate.HibernateUtil;
 import java.util.List;
 import org.hibernate.Query;
@@ -62,6 +63,17 @@ public class LineCartDAO {
     public void saveOrUpdateLinecart(Linecart linecart) {
         try {
             session.saveOrUpdate(linecart);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            transaction.rollback();
+            e.printStackTrace();
+        }
+    }
+    
+    public void deleteLinecart(Integer linecartID) {
+        try {
+            Linecart linecart = (Linecart) session.get(Linecart.class, linecartID);
+            session.delete(linecart);
             session.getTransaction().commit();
         } catch (Exception e) {
             transaction.rollback();

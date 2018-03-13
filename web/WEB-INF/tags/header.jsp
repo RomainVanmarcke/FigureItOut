@@ -45,7 +45,10 @@
                         <a href="account.jsp"><span class="icon-user"></span> My Account</a> 
                         <a href="register.jsp"><span class="icon-edit"></span> Free Register </a> 
                         <a href="contact.jsp"><span class="icon-envelope"></span> Contact us</a>
-                        <a href="LineCartAction"><span class="icon-shopping-cart"></span> 2 Item(s) - <span class="badge badge-warning"> $448.42</span></a>
+                        
+                        <s:if test="#session.userName != null">
+                            <a href="LineCartAction"><span class="icon-shopping-cart"></span> Panier - <span class="badge badge-warning"> $xxx.x</span></a>
+                        </s:if>
                     </div>
                 </div>
             </div>
@@ -87,28 +90,28 @@
                                 <li class="dropdown">
                                     <s:if test="#session.userName != null">
                                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> <s:property value="#session.userName"></s:property> <b class="caret"></b></a>
-                                    <div class="dropdown-menu">
-                                        
-                                        <s:form action="logoutUser">
-                                         <s:submit value="Logout"></s:submit>
+                                        <div class="dropdown-menu">
 
-                                        </s:form>
-                                    </div>
+                                            <s:form action="logoutUser">
+                                             <s:submit value="Logout"></s:submit>
+
+                                            </s:form>
+                                        </div>
                                     </s:if>
                                     <s:else>
                                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
-                                    <div class="dropdown-menu">
-                                        
-                                        <s:form action="loginUser">
-                                            <s:textfield name="user.name" label="Username"></s:textfield>
-                                            <s:password name="user.firstName" label="FirstName"></s:password>
-                                            <s:submit value="Login"></s:submit>
+                                        <div class="dropdown-menu">
 
-                                        </s:form>
+                                            <s:form action="loginUser">
+                                                <s:textfield name="user.name" label="Username"></s:textfield>
+                                                <s:password name="user.firstName" label="FirstName"></s:password>
+                                                <s:submit value="Login"></s:submit>
 
-                                        <p style="color: red;"><s:property value="msg"></s:property></p>
+                                            </s:form>
 
-                                    </div>
+                                            <p style="color: red;"><s:property value="msg"></s:property></p>
+
+                                        </div>
                                     </s:else>
                                     
                                 </li>

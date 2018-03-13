@@ -79,8 +79,14 @@
         
         
         <action name="LineCartAction" class="actions.LineCartAction">
-            <result>/cart.jsp</result>      
+            <result name="success">/cart.jsp</result>      
         </action>
+        <action name="deleteLinecart" method="delete" class="actions.LineCartAction">
+            <result name="success" type="redirect">/LineCartAction</result>     
+        </action>
+        
+        
+        
         
     </package>
 </struts>

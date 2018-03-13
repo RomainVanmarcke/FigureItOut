@@ -15,6 +15,7 @@ import dao.LineCartDAO;
 import dao.UserDAO;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
@@ -31,8 +32,11 @@ public class LineCartAction {
     private UserDAO userDAO = new UserDAO();
     
     public String execute()throws Exception{
+        
+        linecartDAO.saveOrUpdateLinecart(linecart);
+        Map<String, Object> session = ActionContext.getContext().getSession();
         //list();
-        listByUserID();
+        listByUserID((int)session.values().toArray()[1]);
         return SUCCESS;
     }
 
@@ -42,9 +46,8 @@ public class LineCartAction {
 //        return SUCCESS;
 //    }
     
-    public String listByUserID()throws Exception{
-        //User user = userDAO.findUserById(linecart.getUser().getId()).get(0);
-        linecartList = linecartDAO.listLinecartByUserID(1);
+    public String listByUserID(int id)throws Exception{
+        linecartList = linecartDAO.listLinecartByUserID(id);
         return SUCCESS;
     }
     
@@ -76,5 +79,13 @@ public class LineCartAction {
 
     public void setLinecartList(List<Linecart> linecartList) {
         this.linecartList = linecartList;
+    }
+    
+    public String delete() {
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
+        int linecartID = Integer.parseInt(request.getParameter("Linecart.id"));
+        System.out.println("IDDDDDDDD: " + linecartID);
+        linecartDAO.deleteLinecart(linecartID);
+        return SUCCESS;
     }
 }

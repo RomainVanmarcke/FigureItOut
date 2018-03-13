@@ -21,7 +21,7 @@
                         <li class="active">Check Out</li>
                     </ul>
                     <div class="well well-small">
-                        <h1>Cart <small class="pull-right"> x Items are in the cart (DEBUG user: 1) </small></h1>
+                        <h1>Cart <small class="pull-right"> x Items are in the cart of <s:property value="#session.userName"></s:property> </small></h1>
                         <hr class="soften"/>	
 
                         <table class="table table-bordered table-condensed">
@@ -46,7 +46,14 @@
                                         <div class="input-append">
                                             <button class="btn btn-mini" type="button">-</button><button class="btn btn-mini" type="button"> + </button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
                                         </div>
+                                        <s:form action="deleteLinecart">
+
+                                            <s:textfield name="Linecart.id" type="hidden" value = "%{[0]['id']}"></s:textfield>
+                                            <s:submit value="Delete"></s:submit>
+
+                                        </s:form>
                                     </td>
+                                    
                                 </tr>
                                 </s:iterator>
                             </tbody>
