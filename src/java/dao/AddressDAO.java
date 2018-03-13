@@ -28,6 +28,9 @@ public class AddressDAO {
         query.setParameter("user", user);
         List<Address> list = query.list();
         if (list.size() > 0) {
+            list.forEach((a) -> {
+                a.setUser(user);
+            });
             session.close();
             return list;
         }

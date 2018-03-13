@@ -140,3 +140,12 @@ hr.soften {margin: 8px 0;background: #DDD;}
 .even {
     background-color: #FAF0E6;
 }
+
+.formTable {
+    margin: 0px;
+}
+
+.formTable td {
+    border-width: 0px;
+    padding: 0px;
+}

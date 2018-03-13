@@ -38,8 +38,6 @@
                                         <td><s:property value="[0]['user']['name']" /></td>
                                         <td><s:property value="[0]['date']" /></td>
                                         <td><s:property value="[0]['status']" /></td>
-                                        <td> 
-                                        </td>
                                     </tr>
                                 </s:iterator>
                             </tbody>
