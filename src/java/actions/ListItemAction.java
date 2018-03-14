@@ -27,7 +27,7 @@ import org.apache.struts2.ServletActionContext;
  *
  * @author Pierre
  */
-public class ItemAction extends ActionSupport implements ModelDriven<Item> {
+public class ListItemAction extends ActionSupport implements ModelDriven<Item> {
 
     private Item item = new Item();
     private List<Item> itemList;
@@ -41,19 +41,7 @@ public class ItemAction extends ActionSupport implements ModelDriven<Item> {
     public String execute() throws Exception {
         //setItemList();
         
-        Map<String, Object> session = ActionContext.getContext().getSession();
-        if(session.containsKey("userId")){
-            HttpServletRequest request = (HttpServletRequest) ActionContext.getContext()
-                .get(ServletActionContext.HTTP_REQUEST);
-        if (request.getParameter("Item.name") != null) {
-
-            Integer idsupp = Integer.parseInt(request.getParameter("supp"));
-            Supplier sup = supplierDAO.listSupplierById(idsupp);
-            item.setSupplier(sup);
-             String[] catString = request.getParameterValues("cat");
-        List<Category> list = categoryDAO.findAll(catString);
-        item.setCategories(new HashSet(list));
-        }
+     
         itemList = new ArrayList<Item>();
         setItemList();
         supplierList = new ArrayList<Supplier>();
@@ -61,8 +49,6 @@ public class ItemAction extends ActionSupport implements ModelDriven<Item> {
         categoryList = new ArrayList<Category>();
         setCategoryList();
         return SUCCESS;
-        }
-        return ERROR;
         
     }
 
