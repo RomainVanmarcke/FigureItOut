@@ -23,26 +23,23 @@
             </div>
 
             <div class="row">
-                <div class="span12">	
-
-                    <div class="well">
-                        <table class="table table-bordered table-condensed">
-                            <thead>
-                                <td>Id</td>
-                                <td>Name</td>
-                                <td>Description</td>
-                            </thead>
-                            <tbody>
-                                <s:iterator value="items">
-                                    <tr>
-                                        <td><s:property value="['id']" /></td>
-                                        <td><s:property value="['name']" /></td>
-                                        <td><s:property value="['description']" /></td>
-                                    </tr>
-                                </s:iterator>
-                            </tbody>
-                        </table>
-                    </div>	
+                <div class="span12">   
+                <s:if test="%{items.isEmpty()}">
+                    <div class="row">
+                        <p>No results found for <s:property value="search" /></p>
+                        <br><br>
+                    </div>
+                </s:if>
+                <s:else>
+                        <p><s:property value ="items.size()"/> result(s) found. </p>
+                        <s:iterator value="items">
+                            <div class="well">
+                                <h2><a href="item/<s:property value="['id']" />"><s:property value="['name']" /></a></h2>
+                                <p><s:property value="['description']" /></p>
+                            </div>  
+                            </tr>
+                        </s:iterator>
+                </s:else>
                 </div>
             </div>
         </jsp:body>

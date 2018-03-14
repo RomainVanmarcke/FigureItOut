@@ -23,9 +23,7 @@ public class SearchAction extends ActionSupport {
     public String search = "";
     
     public String quickSearch() {
-        // TODO : filter by search
-        items = itemDaoServices.getAll();
-        System.out.println("Searched: " + search);
+        items = itemDaoServices.searchInTag(search);
         return SUCCESS;
     }
     

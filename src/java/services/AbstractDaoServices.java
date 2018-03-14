@@ -7,9 +7,12 @@ package services;
 
 import hibernate.HibernateSessionManager;
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
@@ -60,6 +63,25 @@ public class AbstractDaoServices<T> implements DaoServices<T> {
 
         session.beginTransaction();
         final List<T> entities = session.createCriteria(this.entityClass).add(Restrictions.allEq(parameters)).list();
+        session.getTransaction().commit();
+
+        session.close();
+
+        return entities;
+    }
+    
+    public List<T> filterLike(Map<String, String> parameters) {
+        final Session session = HibernateSessionManager.getSession();
+
+        session.beginTransaction();
+        
+        Criteria criteria = session.createCriteria(entityClass);
+        
+        for (Map.Entry<String, String> parameter : parameters.entrySet()) {
+            criteria.add(Restrictions.ilike(parameter.getKey(), parameter.getValue(), MatchMode.ANYWHERE));
+        }
+        
+        final List<T> entities = criteria.list();
         session.getTransaction().commit();
 
         session.close();
