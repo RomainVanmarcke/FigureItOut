@@ -15,6 +15,7 @@ import dao.OrdersDAO;
 import dao.UserDAO;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
@@ -26,6 +27,7 @@ public class OrdersAction {
     
     private Orders orders = new Orders();
     private List<Orders> ordersList = new ArrayList<Orders>();
+    private List<Orders> ordersListByUser = new ArrayList<Orders>();
     private OrdersDAO ordersDAO = new OrdersDAO();
     private User user = new User();
     private UserDAO userDAO = new UserDAO();
@@ -36,13 +38,16 @@ public class OrdersAction {
     }
     
     public String findByUser()throws Exception{
-        User ordersOwner = userDAO.findUserById(orders.getUser().getId());
-        ordersList = ordersDAO.findOrdersByUser(ordersOwner);
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        User ordersOwner = userDAO.findUserById((Integer) session.get("userId"));
+        ordersListByUser = ordersDAO.findOrdersByUser(ordersOwner);
         return SUCCESS;
     }
     
     public String findByDate()throws Exception{
-        ordersList = ordersDAO.findOrdersByDate(orders.getDate());
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        User ordersOwner = userDAO.findUserById((Integer) session.get("userId"));
+        ordersListByUser = ordersDAO.findOrdersByDate(orders.getDate(), ordersOwner);
         return SUCCESS;
     }
     
@@ -64,7 +69,7 @@ public class OrdersAction {
         return orders;
     }
 
-    public void setUser(Orders orders) {
+    public void setOrders(Orders orders) {
         this.orders = orders;
     }
 
@@ -74,5 +79,13 @@ public class OrdersAction {
 
     public void setOrdersList(List<Orders> ordersList) {
         this.ordersList = ordersList;
+    }
+    
+    public List<Orders> getOrdersListByUser() {
+        return ordersListByUser;
+    }
+
+    public void setOrdersListByUser(List<Orders> ordersList) {
+        this.ordersListByUser = ordersList;
     }
 }

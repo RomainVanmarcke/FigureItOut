@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Twitter Bootstrap shopping cart</title>
+        <title>FigureItOut</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -42,7 +42,9 @@
                             <a href="#"><span class="icon-tumblr"></span></a>
                         </div>
                         <a href="index.jsp"> <span class="icon-home"></span> Home</a> 
-                        <a href="account.jsp"><span class="icon-user"></span> My Account</a> 
+                        <s:if test="#session.userName != null">
+                            <a href="account.jsp"><span class="icon-user"></span> My Account</a> 
+                        </s:if>
                         <a href="register.jsp"><span class="icon-edit"></span> Free Register </a> 
                         <a href="contact.jsp"><span class="icon-envelope"></span> Contact us</a>
                         

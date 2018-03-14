@@ -15,6 +15,7 @@ import dao.AddressDAO;
 import dao.UserDAO;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
@@ -36,7 +37,8 @@ public class AddressAction {
     }
     
     public String findByUser()throws Exception{
-        User addressOwner = userDAO.findUserById(address.getUser().getId());
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        User addressOwner = userDAO.findUserById((Integer) session.get("userId"));
         addressList = addressDAO.findAddressByUser(addressOwner);
         return SUCCESS;
     }

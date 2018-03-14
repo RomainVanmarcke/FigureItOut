@@ -22,10 +22,11 @@ public class OrdersDAO {
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = session.beginTransaction();
 
-    public List<Orders> findOrdersByDate(String date) {
-        String sql = " from Orders o where o.date=:date";
+    public List<Orders> findOrdersByDate(String date, User user) {
+        String sql = " from Orders o where o.date=:date and o.user=:user";
         Query query = session.createQuery(sql);
         query.setParameter("date", date);
+        query.setParameter("user", user);
         List<Orders> list = query.list();
         if (list.size() > 0) {
             //session.close();

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
-    <%@taglib prefix="s" tagdir="/WEB-INF/tags" %>
+    <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+    <%@taglib prefix="s" uri="/struts-tags" %>
 
     <t:genericpage>
         <jsp:attribute name="header">
@@ -274,7 +275,7 @@
                                             <s:hidden id="itemTagU" name="Item.deletedU" type="hidden"  value = "%{[0]['deleted']}"></s:hidden>
                                             <s:hidden id="itemTagU" name="supp" type="hidden"  value="%{[0]['supplier']['id']}" ></s:hidden>
                                             <s:iterator value="%{[0]['categories']}">
-                                                 <s:hidden id="itemTagU" name="cat" type="hidden"  value="%{[0]['id']}" ></s:hidden>
+                                                <s:hidden id="itemTagU" name="cat" type="hidden"  value="%{[0]['id']}" ></s:hidden>
                                             </s:iterator>   
                                             <s:submit value="update"></s:submit>
 
