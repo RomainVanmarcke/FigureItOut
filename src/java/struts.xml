@@ -41,11 +41,13 @@
         </action>
         <action name="findUserById" method="findById" class="actions.UserAction">
             <result name="success">/users.jsp</result>
+            <result name="error">/login.jsp</result>
         </action>
      
      
         <action name="ItemAction" class="actions.ItemAction">
             <result>/listItem.jsp</result>      
+             <result name="error">/login.jsp</result>
         </action>
         <action name="saveOrUpdateItem" method="saveOrUpdateItem" class="actions.ItemAction">
             <result name="success" type="redirect">/ItemAction</result>

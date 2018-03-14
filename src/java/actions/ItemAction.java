@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
@@ -39,8 +40,10 @@ public class ItemAction extends ActionSupport implements ModelDriven<Item> {
 
     public String execute() throws Exception {
         //setItemList();
-      
-        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext()
+        
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        if(session.containsKey("userId")){
+            HttpServletRequest request = (HttpServletRequest) ActionContext.getContext()
                 .get(ServletActionContext.HTTP_REQUEST);
         if (request.getParameter("Item.name") != null) {
 
@@ -58,6 +61,9 @@ public class ItemAction extends ActionSupport implements ModelDriven<Item> {
         categoryList = new ArrayList<Category>();
         setCategoryList();
         return SUCCESS;
+        }
+        return ERROR;
+        
     }
 
     public Item getModel() {
