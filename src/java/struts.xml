@@ -89,10 +89,9 @@
         </action>
         
         
-        
-        
-        
-        
+        <action name="quickSearch" class="actions.SearchAction" method="quickSearch">
+            <result name="success">/searchItems.jsp</result>
+        </action>
         
     </package>
 </struts>

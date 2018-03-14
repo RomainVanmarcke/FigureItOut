@@ -83,8 +83,9 @@
                                 <li class=""><a href="four-col.jsp">Four Column</a></li>
                                 <li class=""><a href="general.jsp">General Content</a></li>
                             </ul>
-                            <form action="#" class="navbar-search pull-left">
-                                <input type="text" placeholder="Search" class="search-query span2">
+                            
+                            <form action="quickSearch" method="POST" class="navbar-search pull-left">
+                                <input type="text" name="search" placeholder="Search" class="search-query span2">
                             </form>
                             <ul class="nav pull-right">
                                 <li class="dropdown">
