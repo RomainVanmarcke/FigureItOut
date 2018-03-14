@@ -43,7 +43,10 @@
             <result name="success">/users.jsp</result>
             <result name="error">/login.jsp</result>
         </action>
-     
+         <action name="home" class="actions.ListItemAction">
+            <result>/home.jsp</result>      
+        
+        </action>
      
         <action name="ItemAction" class="actions.ItemAction">
             <result>/listItem.jsp</result>      

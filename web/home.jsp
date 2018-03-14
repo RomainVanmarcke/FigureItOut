@@ -1,7 +1,8 @@
 <!DOCTYPE html>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <html lang="en">
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
-    <%@taglib prefix="s" tagdir="/WEB-INF/tags" %>
+    <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
     <t:genericpage>
         <jsp:attribute name="header">
@@ -14,7 +15,7 @@
         <jsp:body>
 
             <div class="row">
-              <%@ include file="sidebar.jsp" %>  
+                <%@ include file="sidebar.jsp" %>  
                 <div class="span9">
                     <div class="well np">
                         <div id="myCarousel" class="carousel slide homCar">
@@ -126,57 +127,38 @@
                             </div>
                         </div>
                         <div class="row-fluid">
-                            <ul class="thumbnails">
-                                <li class="span4">
-                                    <div class="thumbnail">
+                          
+                            
+                                 <s:iterator value="itemList">
+                                           
+                                    <s:if test="[0][deleted] !=true">
+                                    
+                                    
+                                                <s:form action="">
+                                                    <s:property value="[0]['id']" />
+                                                    <s:property value="[0]['name']" />
+                                                    <s:property value="[0]['description']" />
+                                                    <s:property value="[0]['price']" />
+                                                    <s:property value="[0]['quantity']" />
+                                                    <s:property value="[0]['priceModifier']" />
+                                                    <s:property value="[0]['supplier']['name']" />
+                                                    <s:property value="[0]['tag']" /></td>
 
-                                        <a class="zoomTool" href="product_details.jsp" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                        <a href="product_details.jsp"><img src="assets/img/b.jpg" alt=""></a>
-                                        <div class="caption cntr">
-                                            <p>Manicure & Pedicure</p>
-                                            <p><strong> $22.00</strong></p>
-                                            <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-                                            <div class="actionList">
-                                                <a class="pull-left" href="#">Add to Wish List </a> 
-                                                <a class="pull-left" href="#"> Add to Compare </a>
-                                            </div> 
-                                            <br class="clr">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="span4">
-                                    <div class="thumbnail">
-                                        <a class="zoomTool" href="product_details.jsp" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                        <a href="product_details.jsp"><img src="assets/img/c.jpg" alt=""></a>
-                                        <div class="caption cntr">
-                                            <p>Manicure & Pedicure</p>
-                                            <p><strong> $22.00</strong></p>
-                                            <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-                                            <div class="actionList">
-                                                <a class="pull-left" href="#">Add to Wish List </a> 
-                                                <a class="pull-left" href="#"> Add to Compare </a>
-                                            </div> 
-                                            <br class="clr">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="span4">
-                                    <div class="thumbnail">
-                                        <a class="zoomTool" href="product_details.jsp" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                        <a href="product_details.jsp"><img src="assets/img/a.jpg" alt=""></a>
-                                        <div class="caption cntr">
-                                            <p>Manicure & Pedicure</p>
-                                            <p><strong> $22.00</strong></p>
-                                            <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-                                            <div class="actionList">
-                                                <a class="pull-left" href="#">Add to Wish List </a> 
-                                                <a class="pull-left" href="#"> Add to Compare </a>
-                                            </div> 
-                                            <br class="clr">
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
+                                                    <s:iterator value="%{[0]['categories']}">
+
+                                                        <s:property value="[0]['name']" />
+                                                    </s:iterator>   
+
+
+
+
+                                                    <s:submit value="add"></s:submit>
+
+                                                </s:form>
+                                          
+                                    </s:if>
+                                </s:iterator>
+                         
                         </div>
                     </div>
                     <!--
@@ -229,62 +211,9 @@
                                         </div>
                                     </div>
                                 </li>
-                                    <table>
-                            <thead>
-                            <td>Id</td>
-                            <td>Name</td>
-                            <td>Description</td>
-                            <td>Price</td>
-                            <td>Quantity</td>
-                            <td>Price Modifier</td>
-                            <td>Supplier</td>
-                            <td>Tags</td>
-                         
-                            <td>Categories</td>
-                            <td>add</td>
-                            </thead>
-                            <tbody>
-                                <s:iterator value="itemList">
 
-                                    <tr>
-                                        <td><s:property value="[0]['id']" /></td>
-                                        <td><s:property value="[0]['name']" /></td>
-                                        <td><s:property value="[0]['description']" /></td>
-                                        <td><s:property value="[0]['price']" /></td>
-                                        <td><s:property value="[0]['quantity']" /></td>
-                                        <td><s:property value="[0]['priceModifier']" /></td>
-                                        <td><s:property value="[0]['supplier']['name']" /></td>
-                                        <td><s:property value="[0]['tag']" /></td>
-                                       
-                                        <td>
-                                            <s:iterator value="%{[0]['categories']}">
-                                           
-                                            <s:property value="[0]['name']" />
-                                            </s:iterator>   
-                                        </td>
-                                    
-                                            <s:form action="ItemAction">
-                                            <s:hidden id="itemNameU" name="Item.id" type="hidden"  value = "%{[0]['id']}"></s:hidden>
-                                            <s:hidden id="itemNameU" name="Item.name" type="hidden"  value = "%{[0]['name']}"></s:hidden>
-                                            <s:hidden id="itemDescU" name="Item.description" type="hidden" value = "%{[0]['description']}"></s:hidden>
-                                            <s:hidden id="itemPriceU" name="Item.price" type="hidden" value = "%{[0]['price']}"></s:hidden>
-                                            <s:hidden id="itemQuantityU" name="Item.quantity" type="hidden"  value = "%{[0]['quantity']}"></s:hidden>
-                                            <s:hidden id="itemPmU" name="Item.priceModifier" type="hidden" value = "%{[0]['priceModifier']}"></s:hidden>
-                                            <s:hidden id="itemTagU" name="Item.tag" type="hidden"  value = "%{[0]['tag']}"></s:hidden>
-                                            <s:hidden id="itemTagU" name="Item.deletedU" type="hidden"  value = "%{[0]['deleted']}"></s:hidden>
-                                            <s:hidden id="itemTagU" name="supp" type="hidden"  value="%{[0]['supplier']['id']}" ></s:hidden>
-                                            <s:iterator value="%{[0]['categories']}">
-                                                 <s:hidden id="itemTagU" name="cat" type="hidden"  value="%{[0]['id']}" ></s:hidden>
-                                            </s:iterator>   
-                                            <s:submit value="update"></s:submit>
+                               
 
-                                        </s:form></td>
-                                    </tr>
-
-
-                                </s:iterator>
-                            </tbody>
-                        </table>
                             </ul>	
                         </div>
                     </div>
@@ -303,14 +232,12 @@
             <!-- 
             Clients 
             -->
-            <script type="text/javascript">
-            window.location.href = "http://localhost:8080/FigureItOut/home"
-        </script>
+
         </jsp:body>
-      
+
     </t:genericpage>
-    
-    
+
+
     <!--
     Three column view
     -->
