@@ -30,7 +30,9 @@
                                     <select required name="idCategory">
                                         <option value="">-</option>
                                         <s:iterator value="categories">
-                                            <option value="<s:property value="['id']" />">
+                                            <option 
+                                                <s:if test="%{['id'] == idCategory}">selected</s:if>
+                                                value="<s:property value="['id']" />">
                                                 <s:property value="['name']" />
                                             </option>
                                         </s:iterator>
@@ -40,19 +42,19 @@
                             <div class="control-group">
                                 <label class="control-label" for="minPrice">Minimal Price</label>
                                 <div class="controls">
-                                    <input name="minPrice" type="number" id="minPrice" placeholder="0" value="0">
+                                    <input name="minPrice" type="number" id="minPrice" placeholder="<s:property value="['minPrice']" />" value="<s:property value="['minPrice']" />">
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="maxPrice">Maximal Price</label>
                                 <div class="controls">
-                                    <input name="maxPrice" type="number" id="maxPrice" value="10000" placeholder="10000">
+                                    <input name="maxPrice" type="number" id="maxPrice" value="<s:property value="['maxPrice']" />" placeholder="<s:property value="['maxPrice']" />">
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="minQuantity">Minimal Quantity</label>
                                 <div class="controls">
-                                    <input name="minQuantity" type="number" id="minQuantity" placeholder="1" value="1">
+                                    <input name="minQuantity" type="number" id="minQuantity" placeholder="<s:property value="['minQuantity']" />" value="<s:property value="['minQuantity']" />">
                                 </div>
                             </div>
                             
@@ -76,6 +78,9 @@
                                     <h3><s:property value="['name']"/></h3>
                                     <p><b>Price: </b><s:property value="['price']"/></p>
                                     <p><b>Description: </b><s:property value="['description']"/></p>
+                                    <p><b>Quantity: </b><s:property value="['quantity']"/></p>
+                                    <p><b>Supplier: </b><s:property value="['supplier']['name']"/></p>
+                                    <p><b>Category: </b><s:property value="['category']['name']"/></p>
                                 </div>
                                 <hr>
                             </s:iterator>

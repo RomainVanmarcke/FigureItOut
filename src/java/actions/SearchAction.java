@@ -8,9 +8,7 @@ package actions;
 import com.opensymphony.xwork2.ActionSupport;
 import entities.Category;
 import entities.Item;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import services.CategoryDaoServices;
 import services.ItemDaoServices;
 
@@ -29,11 +27,12 @@ public class SearchAction extends ActionSupport {
     public String search = "";
     
     public int idCategory;
-    public int minPrice;
-    public int maxPrice;
-    public int minQuantity;
+    public int minPrice = 0;
+    public int maxPrice = 100000;
+    public int minQuantity = 1;
     
     public List<Category> categories;
+    public Category category;
     
     public String quickSearch() {
         items = itemDaoServices.searchInTag(search);
@@ -46,7 +45,7 @@ public class SearchAction extends ActionSupport {
     }
     
     public String advancedSearchResults() {
-        // Category category = categoryDaoServices.get(idCategory);
+        category = categoryDaoServices.get(idCategory);
         items = itemDaoServices.search(idCategory, minPrice, maxPrice, minQuantity);
         System.out.println(items.size());
         for (int i = 0; i < items.size(); i++) {
