@@ -34,8 +34,11 @@
                         <p><s:property value ="items.size()"/> result(s) found. </p>
                         <s:iterator value="items">
                             <div class="well">
-                                <h2><a href="item/<s:property value="['id']" />"><s:property value="['name']" /></a></h2>
-                                <p><s:property value="['description']" /></p>
+                                <h3><s:property value="['name']"/></h3>
+                                <p><b>Price: </b><s:property value="['price']"/></p>
+                                <p><b>Description: </b><s:property value="['description']"/></p>
+                                <p><b>Quantity: </b><s:property value="['quantity']"/></p>
+                                <p><b>Supplier: </b><s:property value="['supplier']['name']"/></p>
                             </div>  
                             </tr>
                         </s:iterator>
