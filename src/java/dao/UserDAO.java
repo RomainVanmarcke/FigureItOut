@@ -37,7 +37,6 @@ public class UserDAO {
         User user = null;
         try {
             user = (User) session.get(User.class, id);
-//            System.out.println(user.getAuth().getPassword());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -56,7 +55,10 @@ public class UserDAO {
 
     public void saveOrUpdateUser(User user) {
         try {
+            session.saveOrUpdate(user.getAuth());
+            System.out.println(user.getAuth().getId());
             session.saveOrUpdate(user);
+            session.getTransaction().commit();
         } catch (Exception e) {
             transaction.rollback();
             e.printStackTrace();

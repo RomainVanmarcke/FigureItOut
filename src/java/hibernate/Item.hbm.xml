@@ -32,7 +32,7 @@
         <property name="tag" type="string">
             <column name="Tag" length="65535" />
         </property>
-        <set name="categories" table="category_item" inverse="false" lazy="true" fetch="select">
+        <set name="categories" table="category_item" inverse="false" lazy="false" fetch="select">
             <key>
                 <column name="ItemID" not-null="true" />
             </key>

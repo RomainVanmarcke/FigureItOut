@@ -22,12 +22,12 @@
                         <li class="active">Advanced Search</li>
                     </ul>
                     <div class="well">
-                        <form class="form-horizontal" method="POST" action="advancedSearch">
+                        <form class="form-horizontal" method="POST" action="advancedSearchResults">
                             <h3>Advanced Search</h3>
                             <div class="control-group">
                                 <label class="control-label">Select a category <sup>*</sup></label>
                                 <div class="controls">
-                                    <select required class="span1" name="category">
+                                    <select required name="idCategory">
                                         <option value="">-</option>
                                         <s:iterator value="categories">
                                             <option value="<s:property value="['id']" />">
@@ -38,27 +38,21 @@
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label" for="inputFname">First name <sup>*</sup></label>
+                                <label class="control-label" for="minPrice">Minimal Price</label>
                                 <div class="controls">
-                                    <input type="text" id="inputFname" placeholder="First Name">
+                                    <input name="minPrice" type="number" id="minPrice" placeholder="0" value="0">
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label" for="inputLname">Last name <sup>*</sup></label>
+                                <label class="control-label" for="maxPrice">Maximal Price</label>
                                 <div class="controls">
-                                    <input type="text" id="inputLname" placeholder="Last Name">
+                                    <input name="maxPrice" type="number" id="maxPrice" value="10000" placeholder="10000">
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label" for="inputEmail">Email <sup>*</sup></label>
+                                <label class="control-label" for="minQuantity">Minimal Quantity</label>
                                 <div class="controls">
-                                    <input type="text" placeholder="Email">
-                                </div>
-                            </div>	  
-                            <div class="control-group">
-                                <label class="control-label">Password <sup>*</sup></label>
-                                <div class="controls">
-                                    <input type="password" placeholder="Password">
+                                    <input name="minQuantity" type="number" id="minQuantity" placeholder="1" value="1">
                                 </div>
                             </div>
                             
@@ -70,6 +64,22 @@
                         </form>
                     </div>
                 </div>
+            <s:if test="%{items != null}">
+                <div class="span9">
+                    <div class="well">
+                        <s:if test="%{items.isEmpty()}">
+                            <p>No items found</p>
+                        </s:if>
+                        <s:else>
+                            <s:iterator value="items">
+                                <div class="">
+                                    <h3><s:property value="['name']"/></h3>
+                                </div>
+                            </s:iterator>
+                        </s:else>
+                    </div>
+                </div>
+            </s:if>
             </div>
         </jsp:body>
 
