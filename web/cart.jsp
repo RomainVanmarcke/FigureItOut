@@ -51,7 +51,7 @@
                                     </td>
                                     -->
                                     <td>
-                                        <s:form action="updateQuantityLinecart">
+                                        <s:form action="updateQuantityLinecart" cssClass="formTable">
 
                                             <s:textfield name="Linecart.id" type="hidden" value = "%{[0]['id']}"></s:textfield>
                                             <s:textfield name="Linecart.newQuantity" value = "%{[0]['quantity']}"></s:textfield>
@@ -60,7 +60,7 @@
                                         </s:form>
                                     </td>
                                     <td>
-                                        <s:form action="deleteLinecart">
+                                        <s:form action="deleteLinecart" cssClass="formTable">
 
                                             <s:textfield name="Linecart.id" type="hidden" value = "%{[0]['id']}"></s:textfield>
                                             <s:submit value="Delete from cart"></s:submit>
