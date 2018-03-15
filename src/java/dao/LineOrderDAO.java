@@ -46,6 +46,18 @@ public class LineOrderDAO {
         return lineorder;
     }
 
+    public void saveOrUpdateLinesorder(List<Lineorder> linesorder) {
+        try {
+            for (Lineorder line: linesorder) {
+                session.saveOrUpdate(line);
+            }
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            transaction.rollback();
+            e.printStackTrace();
+        }
+    }
+    
     public void saveOrUpdateLineorder(Lineorder lineorder) {
         try {
             session.saveOrUpdate(lineorder);
