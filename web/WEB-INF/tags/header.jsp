@@ -46,7 +46,6 @@
                             <a href="findOrdersByUser"><span class="icon-user"></span> My Account</a> 
                         </s:if>
                         <a href="register.jsp"><span class="icon-edit"></span> Free Register </a> 
-                        <a href="contact.jsp"><span class="icon-envelope"></span> Contact us</a>
                         
                         <s:if test="#session.userName != null">
                             <a href="LineCartAction"><span class="icon-shopping-cart"></span> Panier - <span class="badge badge-warning"> $xxx.x</span></a>
@@ -80,10 +79,6 @@
                             <ul class="nav">
                                 <li class=""><a href="index.jsp">Home	</a></li>
                                 <li class=""><a href="users.jsp">Users</a></li>
-                                <li class=""><a href="grid-view.jsp">Grid View</a></li>
-
-                                <li class=""><a href="four-col.jsp">Four Column</a></li>
-                                <li class=""><a href="general.jsp">General Content</a></li>
                                 <li class=""><a href="<s:url action="advancedSearch" />">Advanced Search</a></li>
                             </ul>
                             

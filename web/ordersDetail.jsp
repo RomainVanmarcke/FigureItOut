@@ -40,7 +40,7 @@
                             </tbody>
 
                         </table><br/>
-                        <a href="account.jsp" class="shopBtn btn-large"><span class="icon-arrow-left"></span>Return</a>
+                        <a href="findOrdersByUser" class="shopBtn btn-large"><span class="icon-arrow-left"></span>Return</a>
                     </div>
                 </div>
             </div>
