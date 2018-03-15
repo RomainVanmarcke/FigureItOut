@@ -24,11 +24,16 @@
 
                         <div class="well">
                             <!--Amount-->
-                            <s:form action="saveOrders">
-                                <s:radio label="Address" name="orders.address.id" list="shippingAddressList" listKey="id" listValue="line1"/>
-                                <s:select label="Shipping details" name="orders.shippinginfo.id" list="shippinginfoList" listKey="id" listValue="'Price : ' + shippingPrice + ' Carrier : ' + carrier"/>
-                                <s:submit value="Order"/>
-                            </s:form>
+                            <s:if test="shippingAddressList != null">
+                                <s:form action="saveOrders">
+                                    <s:select label="Address" name="orders.address.id" list="shippingAddressList" listKey="id" listValue="line1 + ' ' + city"/>
+                                    <s:select label="Shipping details" name="orders.shippinginfo.id" list="shippinginfoList" listKey="id" listValue="'Price : ' + shippingPrice + ' Carrier : ' + carrier"/>
+                                    <s:submit value="Order"/>
+                                </s:form>
+                            </s:if>
+                            <s:if test="shippingAddressList == null">
+                                <p>You don't have any address! Please create one.</p>
+                            </s:if>
                         </div>
                     </s:if>
                 </div>
