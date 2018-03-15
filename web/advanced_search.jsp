@@ -60,7 +60,7 @@
                             
                             <div class="control-group">
                                 <div class="controls">
-                                    <input type="submit" name="submitAccount" value="Register" class="exclusive shopBtn">
+                                    <input type="submit" name="submitAccount" value="Search" class="exclusive shopBtn">
                                 </div>
                             </div>
                         </form>
