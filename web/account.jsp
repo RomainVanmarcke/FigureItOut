@@ -20,10 +20,10 @@
                 <div class="span12">
                     <s:if test="#session.userName != null">
                         <h3> My account : <s:property value="#session.userName"></s:property></h3>
-                        <hr class="soft"/>
+                            <hr class="soft"/>
 
-                        <div class="well">
-                            <h3>Orders</h3>
+                            <div class="well">
+                                <h3>Orders</h3>
                             <s:form action="findOrdersByDate">
                                 <s:hidden name="orders.user.id" value="#session.userId" />
                                 <s:textfield name="orders.date" label="Date" />
@@ -92,10 +92,43 @@
                                     </tbody>
                                 </table>
                             </div>	
+                            <s:form action="saveOrUpdateAddress" class="form-horizontal" >
+                                <h3>Create an address</h3>
+                                    <div class="control-group">
+                                        <div class="controls">
+                                        <s:textfield name="address.line1" placeholder=" Line 1"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <s:textfield name="address.line2" placeholder=" Line 2"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <s:textfield name="address.zipCode" placeholder=" Zipcode"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <s:textfield name="address.city" placeholder=" City"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <s:textfield name="address.country" placeholder=" Country"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <s:submit class="shopBtn exclusive"/>
+                                    </div>
+                                </div>
+                            </s:form>
                         </div>
                     </s:if>          
                 </div>
             </div>
         </jsp:body>
     </t:genericpage>
-  
+
