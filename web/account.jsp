@@ -30,10 +30,6 @@
                                 <s:submit value="research"/>
                             </s:form>
 
-                            <s:form action="findOrdersByUser">
-                                <s:submit value="research"/>
-                            </s:form>
-
                             <div>
                                 <table class="table table-bordered table-condensed">
                                     <thead>
@@ -67,13 +63,8 @@
                             </div>	
                         </div>
 
-
                         <div class="well">
                             <h3>Address</h3>
-
-                            <s:form action="findAddressByUser">
-                                <s:submit value="research"/>
-                            </s:form>
 
                             <div>
                                 <table class="table table-bordered table-condensed">
@@ -87,7 +78,7 @@
                                     <td>Country</td>
                                     </thead>
                                     <tbody>
-                                        <s:iterator value="addressList">
+                                        <s:iterator value="addressesListByUser">
                                             <tr>
                                                 <td><s:property value="[0]['id']" /></td>
                                                 <td><s:property value="[0]['user']['name']" /></td>

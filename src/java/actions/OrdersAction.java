@@ -9,12 +9,14 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import dao.AddressDAO;
 import dao.LineCartDAO;
 import dao.LineOrderDAO;
 import entities.Orders;
 import entities.User;
 import dao.OrdersDAO;
 import dao.UserDAO;
+import entities.Address;
 import entities.Linecart;
 import entities.Lineorder;
 import java.text.SimpleDateFormat;
@@ -35,9 +37,11 @@ public class OrdersAction {
     private List<Orders> ordersList = new ArrayList<>();
     private List<Orders> ordersListByUser = new ArrayList<>();
     private List<Lineorder> orderslinesList = new ArrayList<>();
+    private List<Address> addressesListByUser = new ArrayList<>();
     private OrdersDAO ordersDAO = new OrdersDAO();
     private LineOrderDAO lineorderDAO = new LineOrderDAO();
     private LineCartDAO linecartDAO = new LineCartDAO();
+    private AddressDAO addressDAO = new AddressDAO();
     private User user = new User();
     private UserDAO userDAO = new UserDAO();
     
@@ -50,6 +54,7 @@ public class OrdersAction {
         Map<String, Object> session = ActionContext.getContext().getSession();
         User ordersOwner = userDAO.findUserById((Integer) session.get("userId"));
         ordersListByUser = ordersDAO.findOrdersByUser(ordersOwner);
+        addressesListByUser = addressDAO.findAddressByUser(ordersOwner);
         return SUCCESS;
     }
     
@@ -119,5 +124,13 @@ public class OrdersAction {
 
     public void setOrderslinesList(List<Lineorder> orderslinesList) {
         this.orderslinesList = orderslinesList;
+    }
+    
+    public List<Address> getAddressesListByUser() {
+        return addressesListByUser;
+    }
+
+    public void setAddressesListByUser(List<Address> addressesListByUser) {
+        this.addressesListByUser = addressesListByUser;
     }
 }

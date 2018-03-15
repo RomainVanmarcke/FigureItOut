@@ -43,7 +43,7 @@
                         </div>
                         <a href="index.jsp"> <span class="icon-home"></span> Home</a> 
                         <s:if test="#session.userName != null">
-                            <a href="account.jsp"><span class="icon-user"></span> My Account</a> 
+                            <a href="findOrdersByUser"><span class="icon-user"></span> My Account</a> 
                         </s:if>
                         <a href="register.jsp"><span class="icon-edit"></span> Free Register </a> 
                         <a href="contact.jsp"><span class="icon-envelope"></span> Contact us</a>
