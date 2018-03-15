@@ -13,7 +13,9 @@ import entities.Orders;
 import entities.User;
 import dao.OrdersDAO;
 import dao.UserDAO;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -56,6 +58,10 @@ public class OrdersAction {
     }
 
     public String saveOrUpdate() {
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        orders.setUser(userDAO.findUserById((Integer) session.get("userId")));
+        orders.setDate(new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()));
+        orders.setStatus("Pending");
         ordersDAO.saveOrUpdateOrders(orders);
         return SUCCESS;
     }

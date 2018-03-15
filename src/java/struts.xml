@@ -70,7 +70,13 @@
         <action name="findOrdersByUser" method="findByUser" class="actions.OrdersAction">
             <result name="success">/account.jsp</result>
         </action>
-
+        <action name="orderCart" method="findWithAddressByUser" class="actions.ShippinginfoAction">
+            <result name="success">/orders.jsp</result>
+        </action>
+        <action name="saveOrders" method="saveOrUpdate" class="actions.OrdersAction">
+            <result name="success">/account.jsp</result>
+        </action>
+        
 
         <action name="listAddress" class="actions.AddressAction">
             <result>/listAddress.jsp</result>

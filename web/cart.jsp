@@ -76,7 +76,7 @@
 
 		
                         <a href="products.jsp" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Continue Shopping </a>
-                        <a href="login.jsp" class="shopBtn btn-large pull-right">Next <span class="icon-arrow-right"></span></a>
+                        <a href="orderCart" class="shopBtn btn-large pull-right">Next <span class="icon-arrow-right"></span></a>
 
                     </div>
                 </div>
@@ -95,7 +95,7 @@
 
     <!-- 
     Clients 
-    -->
+
     Body Section 
     -->
     <script>

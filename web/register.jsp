@@ -107,7 +107,7 @@
                     <div class="well">
                         <s:form action="saveOrUpdateAddress" class="form-horizontal" >
                             <h3>Your Address</h3>
-                            <s:hidden name="address.user.id" type="hidden"  value="1"></s:hidden>
+                            <s:hidden name="address.user.id" type="hidden" value="1"></s:hidden>
                             <div class="control-group">
                                 <div class="controls">
                                     <s:textfield name="address.line1" placeholder=" Line 1"/>
