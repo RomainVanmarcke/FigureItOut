@@ -12,6 +12,7 @@ import entities.User;
 import dao.UserDAO;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
@@ -44,6 +45,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 //        user.getAuth().setId(oldAuthId);
 //        System.out.println("UserAction saveOrUpdate " + user.getAuth().getId());
         userDAO.saveOrUpdateUser(user);
+        Map<String, Object> sessionMap = ActionContext.getContext().getSession();
+        sessionMap.put("userId", user.getId());
+        sessionMap.put("userName", user.getFirstName());
+        sessionMap.put("userRole",user.getRole());
         return SUCCESS;
     }
 

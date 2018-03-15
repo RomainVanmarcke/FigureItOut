@@ -35,12 +35,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
     }
      
     public String logout() {
-        System.out.println("HELLOOOOOOOOO");
-        if (sessionMap.containsKey("userId")) {
-            sessionMap.remove("userName");
-            sessionMap.remove("userId");
-            this.addActionMessage("You have been successfully logged out");
-        }
+        sessionMap.clear();
+        this.addActionMessage("You have been successfully logged out");
         return SUCCESS;
     }
 
