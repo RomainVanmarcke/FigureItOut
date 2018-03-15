@@ -64,12 +64,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
-               
-            
-            
             <s:if test="%{items != null}">
-            <div class="row">
                 <div class="span9">
                     <div class="well">
                         <s:if test="%{items.isEmpty()}">
@@ -84,11 +79,8 @@
                         </s:else>
                     </div>
                 </div>
-            </div>
             </s:if>
-            <s:else>
-                <p>blabla</p>
-            </s:else>
+            </div>
         </jsp:body>
 
     </t:genericpage>
