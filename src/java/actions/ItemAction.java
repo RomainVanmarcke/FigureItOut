@@ -42,17 +42,16 @@ public class ItemAction extends ActionSupport implements ModelDriven<Item> {
         //setItemList();
         
         Map<String, Object> session = ActionContext.getContext().getSession();
-        if(session.containsKey("userId")){
+        if(session.get("userRole").equals("Admin")){
             HttpServletRequest request = (HttpServletRequest) ActionContext.getContext()
                 .get(ServletActionContext.HTTP_REQUEST);
         if (request.getParameter("Item.name") != null) {
-
             Integer idsupp = Integer.parseInt(request.getParameter("supp"));
             Supplier sup = supplierDAO.listSupplierById(idsupp);
             item.setSupplier(sup);
              String[] catString = request.getParameterValues("cat");
-        List<Category> list = categoryDAO.findAll(catString);
-        item.setCategories(new HashSet(list));
+            List<Category> list = categoryDAO.findAll(catString);
+            item.setCategories(new HashSet(list));
         }
         itemList = new ArrayList<Item>();
         setItemList();
@@ -89,16 +88,7 @@ public class ItemAction extends ActionSupport implements ModelDriven<Item> {
         return SUCCESS;
     }
 
-    /**
-     * To list all users.
-     *
-     * @return String
-     */
-    public String list() {
 
-        //itemList = itemDAO.listItem();
-        return SUCCESS;
-    }
 
     /**
      * To delete a user.

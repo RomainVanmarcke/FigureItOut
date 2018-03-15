@@ -26,6 +26,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
         if (validUser != null) {
             sessionMap.put("userId", validUser.getId());
             sessionMap.put("userName", validUser.getFirstName());
+            sessionMap.put("userRole",validUser.getRole());
             return SUCCESS;
         } else {
             this.addActionError("Invalid username and firstname");
