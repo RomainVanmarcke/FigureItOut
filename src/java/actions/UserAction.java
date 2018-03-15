@@ -10,7 +10,6 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import entities.User;
 import dao.UserDAO;
-import entities.Auth;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -27,13 +26,11 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
     private User user = new User();
     private List<User> userList = new ArrayList<User>();
     private UserDAO userDAO = new UserDAO();
-    public Auth myauth = new Auth();
+    public String confirmPassword;
+    public Integer oldAuthId;
     
     public String findById() {
         user = userDAO.findUserById(user.getId());
-        myauth = user.getAuth();
-        System.out.println("HELLO");
-        System.out.println(user.getAuth().getPassword());
         return SUCCESS;
     }
 
@@ -42,6 +39,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
     }
 
     public String saveOrUpdate() {
+        user.setRole("Client");
+        // FIXME : Auth is created whether it is an update or a new creation
+//        user.getAuth().setId(oldAuthId);
+//        System.out.println("UserAction saveOrUpdate " + user.getAuth().getId());
         userDAO.saveOrUpdateUser(user);
         return SUCCESS;
     }
@@ -60,6 +61,8 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
     public String edit() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
         user = userDAO.findUserById(Integer.parseInt(request.getParameter("id")));
+//        System.out.println("UserAction edit " + user.getAuth().getId());
+        oldAuthId = user.getAuth().getId();
         return SUCCESS;
     }
 
