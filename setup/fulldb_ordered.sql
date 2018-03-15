@@ -444,6 +444,23 @@ CREATE TABLE `item` (
   CONSTRAINT `item_ibfk_1` FOREIGN KEY (`SupplierID`) REFERENCES `supplier` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
 
+
+DELIMITER |
+CREATE TRIGGER `item_tag_insert` BEFORE INSERT ON `item`
+FOR EACH ROW 
+BEGIN
+  SET NEW.TAG = CONCAT(NEW.name, ' ', NEW.description, ' ', NEW.price);
+END |
+DELIMITER ;
+
+DELIMITER |
+CREATE TRIGGER `item_tag_update` BEFORE UPDATE ON `item`
+FOR EACH ROW 
+BEGIN
+  SET NEW.TAG = CONCAT(NEW.name, ' ', NEW.description, ' ', NEW.price);
+END |
+DELIMITER ;
+
 INSERT INTO item (`ID`, `Name`, `Description`, `Price`, `Quantity`, `PriceModifier`, `Deleted`, `SupplierID`,`Tag`) VALUES (1, 'Aperiam quia.', 'Amet expedita doloribus eum sed magnam nihil voluptatem. Dolor consequatur soluta voluptatem quam provident. Esse dignissimos nulla eveniet rem blanditiis. Esse magnam iusto non quis.', 209, 51, 7, NULL, 12, NULL);
 INSERT INTO item (`ID`, `Name`, `Description`, `Price`, `Quantity`, `PriceModifier`, `Deleted`, `SupplierID`,`Tag`) VALUES (2, 'Non iure quia.', 'Provident minima alias maiores voluptates et vero. Omnis temporibus iste suscipit delectus dolores. Placeat occaecati quos voluptas fuga consequatur nesciunt. Itaque vel vel molestiae magni accusamus.', 282, 440, 10, NULL, 3, NULL);
 INSERT INTO item (`ID`, `Name`, `Description`, `Price`, `Quantity`, `PriceModifier`, `Deleted`, `SupplierID`,`Tag`) VALUES (3, 'Nesciunt omnis.', 'Itaque corporis quasi maiores animi vel repellendus. Dolor voluptas voluptas modi commodi in labore qui. Vel ut aliquam voluptatem soluta modi maxime dolor. Saepe minima iusto aut vel eveniet voluptas.', 433, 165, 0, NULL, 15, NULL);
@@ -831,6 +848,24 @@ CREATE TABLE `category` (
   `Name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+DELIMITER |
+CREATE TRIGGER `item_category_tag_insert` BEFORE INSERT ON `category`
+FOR EACH ROW 
+BEGIN
+  
+
+  SET NEW.TAG = CONCAT(NEW.name, ' ', NEW.description, ' ', NEW.price);
+END |
+DELIMITER ;
+
+DELIMITER |
+CREATE TRIGGER `item_category_tag_update` BEFORE UPDATE ON `category`
+FOR EACH ROW 
+BEGIN
+  SET NEW.TAG = CONCAT(NEW.name, ' ', NEW.description, ' ', NEW.price);
+END |
+DELIMITER ;
 
 INSERT INTO category (`ID`, `Name`) VALUES (1, 'optio');
 INSERT INTO category (`ID`, `Name`) VALUES (2, 'temporibus');
