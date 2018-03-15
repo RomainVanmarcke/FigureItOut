@@ -11,8 +11,10 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import entities.Linecart;
 import entities.User;
+import entities.Item;
 import dao.LineCartDAO;
 import dao.UserDAO;
+import dao.ItemDAO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +30,7 @@ public class LineCartAction {
     private Linecart linecart = new Linecart();
     private List<Linecart> linecartList = new ArrayList<Linecart>();
     private LineCartDAO linecartDAO = new LineCartDAO();
+    private ItemDAO itemDAO = new ItemDAO();
     private User user = new User();
     private UserDAO userDAO = new UserDAO();
     
@@ -89,7 +92,7 @@ public class LineCartAction {
         return SUCCESS;
     }
     
-        public String updateQuantity() {
+    public String updateQuantity() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
         int linecartID = Integer.parseInt(request.getParameter("Linecart.id"));
         int linecartNewQuantity = Integer.parseInt(request.getParameter("Linecart.newQuantity"));
@@ -97,4 +100,20 @@ public class LineCartAction {
         linecartDAO.updateQuantityLinecart(linecartID, linecartNewQuantity);
         return SUCCESS;
     }
+    
+    public String addLinecart() {
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        int userID = (int)session.values().toArray()[1];
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
+        long itemID = Integer.parseInt(request.getParameter("Item.id"));
+        int itemQuantity = Integer.parseInt(request.getParameter("Item.quantity"));
+        int itemPrice = Integer.parseInt(request.getParameter("Item.price"));
+//        System.out.println("IDDDDDDDD: " + linecartID);
+        User user = userDAO.findUserById(userID);
+        Item item = itemDAO.listUserById(itemID);
+        linecartDAO.addLinecart(user, item, itemQuantity, itemPrice);
+        return SUCCESS;
+    }
+    
+        
 }

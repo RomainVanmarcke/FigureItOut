@@ -92,6 +92,9 @@
         <action name="updateQuantityLinecart" method="updateQuantity" class="actions.LineCartAction">
             <result name="success" type="redirect">/LineCartAction</result>     
         </action>
+        <action name="addItemToLinecart" method="addLinecart" class="actions.LineCartAction">
+            <result name="success" type="redirect">/home</result>     
+        </action>
         
         
         <action name="quickSearch" class="actions.SearchAction" method="quickSearch">

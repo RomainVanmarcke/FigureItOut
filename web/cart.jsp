@@ -37,10 +37,10 @@
                             <tbody>
                                 <s:iterator value="linecartList">
                                 <tr>
-                                    <td><s:property value="[0]['id']" /></td>
+                                    <td><s:property value="['id']" /></td>
                                     <td><img width="100" src="assets/img/e.jpg" alt=""></td>
-                                    <td><s:property value="[0]['item']['name']" /></td>
-                                    <td><s:property value="[0]['price']" /></td>
+                                    <td><s:property value="['item']['id']"/></td>
+                                    <td><s:property value="['price']" /></td>
                                     <!--
                                     <td>
                                         <input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value=<s:property value="[0]['quantity']" />>

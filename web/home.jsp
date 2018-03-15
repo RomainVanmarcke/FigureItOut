@@ -134,15 +134,15 @@
                                     <s:if test="[0][deleted] !=true">
                                     
                                     
-                                                <s:form action="">
-                                                    <s:property value="[0]['id']" />
-                                                    <s:property value="[0]['name']" />
-                                                    <s:property value="[0]['description']" />
-                                                    <s:property value="[0]['price']" />
-                                                    <s:property value="[0]['quantity']" />
-                                                    <s:property value="[0]['priceModifier']" />
-                                                    <s:property value="[0]['supplier']['name']" />
-                                                    <s:property value="[0]['tag']" /></td>
+                                                <s:form action="addItemToLinecart">
+                                                    <s:textfield name="Item.id" type="hidden" value = "%{[0]['id']}"></s:textfield>
+                                                    <s:textfield name="Item.quantity" type="hidden" value = "%{[0]['quantity']}"></s:textfield>
+                                                    <s:textfield name="Item.price" type="hidden" value = "%{[0]['price']}"></s:textfield>
+                                                    <u>Produit</u> : <s:property value="[0]['name']" /><br/>
+                                                    <u>Description</u> : <s:property value="[0]['description']" /><br/>
+                                                    <u>Prix</u> : <s:property value="[0]['price']" /><br/>
+                                                    <u>Supplier</u> : <s:property value="[0]['supplier']['name']" /><br/>
+                                                    <u>Tag</u> : <s:property value="[0]['tag']" /></td>
 
                                                     <s:iterator value="%{[0]['categories']}">
 
