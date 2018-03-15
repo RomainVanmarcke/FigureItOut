@@ -68,10 +68,10 @@ public class ItemDAO {
         }
     }
 
-    public Item listUserById(long itemId) {
+    public Item findItemById(long itemId) {
         Item item = null;
         try {
-            item = (Item) session.get(Item.class, itemId);
+            item = (Item) session.get(Item.class, (int) itemId);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -37,10 +37,10 @@
                             <tbody>
                                 <s:iterator value="linecartList">
                                 <tr>
-                                    <td><s:property value="[0]['id']" /></td>
+                                    <td><s:property value="['id']" /></td>
                                     <td><img width="100" src="assets/img/e.jpg" alt=""></td>
-                                    <td><s:property value="[0]['item']['name']" /></td>
-                                    <td><s:property value="[0]['price']" /></td>
+                                    <td><s:property value="['item']['id']"/></td>
+                                    <td><s:property value="['price']" /></td>
                                     <!--
                                     <td>
                                         <input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value=<s:property value="[0]['quantity']" />>
@@ -76,7 +76,7 @@
 
 		
                         <a href="products.jsp" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Continue Shopping </a>
-                        <a href="login.jsp" class="shopBtn btn-large pull-right">Next <span class="icon-arrow-right"></span></a>
+                        <a href="orderCart" class="shopBtn btn-large pull-right">Next <span class="icon-arrow-right"></span></a>
 
                     </div>
                 </div>
@@ -95,7 +95,7 @@
 
     <!-- 
     Clients 
-    -->
+
     Body Section 
     -->
     <script>

@@ -12,6 +12,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import entities.Linecart;
 import entities.User;
+import dao.UserDAO;
 import org.hibernate.Transaction;
 
 /**
@@ -37,7 +38,7 @@ public class LineCartDAO {
         return null;
     }
     
-        public List<Linecart> listLinecartByUserID(int id) {
+    public List<Linecart> listLinecartByUserID(int id) {
         String sql = " from Linecart o where o.user.id=:user";
         Query query = session.createQuery(sql);
         query.setParameter("user", id);
@@ -47,6 +48,19 @@ public class LineCartDAO {
             return list;
         }
         session.close();
+        return null;
+    }
+    
+    public Linecart listLinecartByItemID(int itemID, int userID) {
+        String sql = " from Linecart o where o.item.id=:item and o.user.id=:user";
+        Query query = session.createQuery(sql);
+        query.setParameter("item", itemID);
+        query.setParameter("user", userID);
+        System.out.println("TEST");
+        List<Linecart> list = query.list();
+        if (list.size() > 0) {
+            return list.get(0);
+        }
         return null;
     }
 
@@ -81,7 +95,7 @@ public class LineCartDAO {
         }
     }
     
-        public void updateQuantityLinecart(Integer linecartID, int quantity) {
+    public void updateQuantityLinecart(Integer linecartID, int quantity) {
         try {
             Linecart linecart = (Linecart) session.get(Linecart.class, linecartID);
             linecart.setQuantity(quantity);
@@ -92,4 +106,24 @@ public class LineCartDAO {
             e.printStackTrace();
         }
     }
+    
+    public void addLinecart(User user, Item item, int quantity, int price) {
+        try {
+            Linecart ln = listLinecartByItemID(item.getId(), user.getId());
+            if(ln != null) {
+                updateQuantityLinecart(ln.getId(),ln.getQuantity()+1);
+            } else {
+                Linecart linecart = new Linecart(item, user, 1 , price);
+                System.out.println("USER : " + user.getId());
+                System.out.println("ITEM : " + item.getId());
+                session.save(linecart);
+                session.getTransaction().commit();                
+            }
+
+        } catch (Exception e) {
+            transaction.rollback();
+            e.printStackTrace();
+        }
+    }
+    
 }

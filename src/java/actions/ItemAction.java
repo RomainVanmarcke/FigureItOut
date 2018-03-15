@@ -119,7 +119,7 @@ public class ItemAction extends ActionSupport implements ModelDriven<Item> {
      */
     public String edit() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
-        item = itemDAO.listUserById(Long.parseLong(request.getParameter("id")));
+        item = itemDAO.findItemById(Long.parseLong(request.getParameter("id")));
         return SUCCESS;
     }
 

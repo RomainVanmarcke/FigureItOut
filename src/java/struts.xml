@@ -70,7 +70,16 @@
         <action name="findOrdersByUser" method="findByUser" class="actions.OrdersAction">
             <result name="success">/account.jsp</result>
         </action>
-
+        <action name="orderCart" method="findWithAddressByUser" class="actions.ShippinginfoAction">
+            <result name="success">/orders.jsp</result>
+        </action>
+        <action name="saveOrders" method="saveOrUpdate" class="actions.OrdersAction">
+            <result name="success">/account.jsp</result>
+        </action>
+        <action name="ordersDetail" method="findDetails" class="actions.OrdersAction">
+            <result name="success">/ordersDetail.jsp</result>
+        </action>
+        
 
         <action name="listAddress" class="actions.AddressAction">
             <result>/listAddress.jsp</result>
@@ -92,11 +101,18 @@
         <action name="updateQuantityLinecart" method="updateQuantity" class="actions.LineCartAction">
             <result name="success" type="redirect">/LineCartAction</result>     
         </action>
+        <action name="addItemToLinecart" method="addLinecart" class="actions.LineCartAction">
+            <result name="success" type="redirect">/home</result>     
+        </action>
         
         
         <action name="quickSearch" class="actions.SearchAction" method="quickSearch">
             <result name="success">/searchItems.jsp</result>
         </action>
+        <action name="advancedSearch" class="actions.SearchAction" method="advancedSearch">
+            <result name="success">/advanced_search.jsp</result>
+        </action>
+        
         
     </package>
 </struts>

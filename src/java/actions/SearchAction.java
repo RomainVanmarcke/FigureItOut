@@ -6,8 +6,10 @@
 package actions;
 
 import com.opensymphony.xwork2.ActionSupport;
+import entities.Category;
 import entities.Item;
 import java.util.List;
+import services.CategoryDaoServices;
 import services.ItemDaoServices;
 
 /**
@@ -17,13 +19,22 @@ import services.ItemDaoServices;
 public class SearchAction extends ActionSupport {
     
     private final ItemDaoServices itemDaoServices = new ItemDaoServices();
+    private final CategoryDaoServices categoryDaoServices = new CategoryDaoServices();
+    
     
     private List<Item> items;
     
     public String search = "";
     
+    public List<Category> categories;
+    
     public String quickSearch() {
         items = itemDaoServices.searchInTag(search);
+        return SUCCESS;
+    }
+    
+    public String advancedSearch() {
+        categories = categoryDaoServices.getAll();
         return SUCCESS;
     }
     

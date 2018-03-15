@@ -9,11 +9,17 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import dao.LineCartDAO;
+import dao.LineOrderDAO;
 import entities.Orders;
 import entities.User;
 import dao.OrdersDAO;
 import dao.UserDAO;
+import entities.Linecart;
+import entities.Lineorder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -26,9 +32,12 @@ import org.apache.struts2.ServletActionContext;
 public class OrdersAction {
     
     private Orders orders = new Orders();
-    private List<Orders> ordersList = new ArrayList<Orders>();
-    private List<Orders> ordersListByUser = new ArrayList<Orders>();
+    private List<Orders> ordersList = new ArrayList<>();
+    private List<Orders> ordersListByUser = new ArrayList<>();
+    private List<Lineorder> orderslinesList = new ArrayList<>();
     private OrdersDAO ordersDAO = new OrdersDAO();
+    private LineOrderDAO lineorderDAO = new LineOrderDAO();
+    private LineCartDAO linecartDAO = new LineCartDAO();
     private User user = new User();
     private UserDAO userDAO = new UserDAO();
     
@@ -51,12 +60,27 @@ public class OrdersAction {
         return SUCCESS;
     }
     
+    public String findDetails()throws Exception{
+        orderslinesList = lineorderDAO.findByOrdersId(orders.getId());
+        return SUCCESS;
+    }
+    
     public Orders getModel() {
         return orders;
     }
 
     public String saveOrUpdate() {
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        orders.setUser(userDAO.findUserById((Integer) session.get("userId")));
+        orders.setDate(new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()));
+        orders.setStatus("Pending");
         ordersDAO.saveOrUpdateOrders(orders);
+        List<Linecart> cartlines = linecartDAO.listLinecartByUserID(orders.getUser().getId());
+        List<Lineorder> orderslines = new ArrayList<>();
+        for(Linecart line: cartlines) {
+            orderslines.add(new Lineorder(line.getItem(), orders, line.getQuantity(), line.getPrice()));
+        }
+        lineorderDAO.saveOrUpdateLinesorder(orderslines);
         return SUCCESS;
     }
 
@@ -87,5 +111,13 @@ public class OrdersAction {
 
     public void setOrdersListByUser(List<Orders> ordersList) {
         this.ordersListByUser = ordersList;
+    }
+    
+    public List<Lineorder> getOrderslinesList() {
+        return orderslinesList;
+    }
+
+    public void setOrderslinesList(List<Lineorder> orderslinesList) {
+        this.orderslinesList = orderslinesList;
     }
 }
