@@ -39,7 +39,7 @@
                                 <tr>
                                     <td><s:property value="['id']" /></td>
                                     <td><img width="100" src="assets/img/e.jpg" alt=""></td>
-                                    <td><s:property value="['item']['id']"/></td>
+                                    <td><s:property value="['item']['name']"/></td>
                                     <td><s:property value="['price']" /></td>
                                     <!--
                                     <td>
@@ -75,7 +75,7 @@
                         </table><br/>
 
 		
-                        <a href="products.jsp" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Continue Shopping </a>
+                        <a href="home" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Continue Shopping </a>
                         <a href="orderCart" class="shopBtn btn-large pull-right">Next <span class="icon-arrow-right"></span></a>
 
                     </div>

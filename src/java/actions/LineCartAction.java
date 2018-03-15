@@ -39,7 +39,7 @@ public class LineCartAction {
         linecartDAO.saveOrUpdateLinecart(linecart);
         Map<String, Object> session = ActionContext.getContext().getSession();
         //list();
-        listByUserID((int)session.values().toArray()[1]);
+        listByUserID((int)session.get("userId"));
         return SUCCESS;
     }
 
@@ -103,7 +103,7 @@ public class LineCartAction {
     
     public String addLinecart() {
         Map<String, Object> session = ActionContext.getContext().getSession();
-        int userID = (int)session.values().toArray()[1];
+        int userID = (int)session.get("userId");
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
         long itemID = Integer.parseInt(request.getParameter("Item.id"));
         int itemQuantity = Integer.parseInt(request.getParameter("Item.quantity"));
