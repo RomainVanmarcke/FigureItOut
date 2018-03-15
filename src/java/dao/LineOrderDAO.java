@@ -5,29 +5,30 @@
  */
 package dao;
 
+import entities.Item;
 import hibernate.HibernateUtil;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import entities.Orders;
+import entities.Lineorder;
 import entities.User;
+import dao.UserDAO;
 import org.hibernate.Transaction;
 
 /**
  *
  * @author adrien
  */
-public class OrdersDAO {
+public class LineOrderDAO {
     
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = session.beginTransaction();
-
-    public List<Orders> findOrdersByDate(String date, User user) {
-        String sql = " from Orders o where o.date=:date and o.user=:user";
+    
+    public List<Lineorder> findByOrdersId(Integer id){
+        String sql = " from Lineorder l where l.orders.id=:id";
         Query query = session.createQuery(sql);
-        query.setParameter("date", date);
-        query.setParameter("user", user);
-        List<Orders> list = query.list();
+        query.setParameter("id", id);
+        List<Lineorder> list = query.list();
         if (list.size() > 0) {
             return list;
         }
@@ -35,31 +36,19 @@ public class OrdersDAO {
         return null;
     }
     
-    public List<Orders> findOrdersByUser(User user) {
-        String sql = " from Orders o where o.user=:user";
-        Query query = session.createQuery(sql);
-        query.setParameter("user", user);
-        List<Orders> list = query.list();
-        if (list.size() > 0) {
-            return list;
-        }
-        session.close();
-        return null;
-    }
-
-    public List<Orders> listOrders() {
-        List<Orders> orders = null;
+    public List<Lineorder> listLineorder() {
+        List<Lineorder> lineorder = null;
         try {
-            orders = session.createQuery("from Orders").list();
+            lineorder = session.createQuery("from Lineorder").list();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return orders;
+        return lineorder;
     }
 
-    public void saveOrUpdateOrders(Orders orders) {
+    public void saveOrUpdateLineorder(Lineorder lineorder) {
         try {
-            session.saveOrUpdate(orders);
+            session.saveOrUpdate(lineorder);
             session.getTransaction().commit();
         } catch (Exception e) {
             transaction.rollback();

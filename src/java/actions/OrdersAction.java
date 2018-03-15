@@ -9,10 +9,12 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import dao.LineOrderDAO;
 import entities.Orders;
 import entities.User;
 import dao.OrdersDAO;
 import dao.UserDAO;
+import entities.Lineorder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,7 +32,9 @@ public class OrdersAction {
     private Orders orders = new Orders();
     private List<Orders> ordersList = new ArrayList<Orders>();
     private List<Orders> ordersListByUser = new ArrayList<Orders>();
+    private List<Lineorder> orderslinesList = new ArrayList<Lineorder>();
     private OrdersDAO ordersDAO = new OrdersDAO();
+    private LineOrderDAO lineorderDAO = new LineOrderDAO();
     private User user = new User();
     private UserDAO userDAO = new UserDAO();
     
@@ -50,6 +54,11 @@ public class OrdersAction {
         Map<String, Object> session = ActionContext.getContext().getSession();
         User ordersOwner = userDAO.findUserById((Integer) session.get("userId"));
         ordersListByUser = ordersDAO.findOrdersByDate(orders.getDate(), ordersOwner);
+        return SUCCESS;
+    }
+    
+    public String findDetails()throws Exception{
+        orderslinesList = lineorderDAO.findByOrdersId(orders.getId());
         return SUCCESS;
     }
     
@@ -93,5 +102,13 @@ public class OrdersAction {
 
     public void setOrdersListByUser(List<Orders> ordersList) {
         this.ordersListByUser = ordersList;
+    }
+    
+    public List<Lineorder> getOrderslinesList() {
+        return orderslinesList;
+    }
+
+    public void setOrderslinesList(List<Lineorder> orderslinesList) {
+        this.orderslinesList = orderslinesList;
     }
 }

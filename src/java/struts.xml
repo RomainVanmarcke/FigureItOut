@@ -76,6 +76,9 @@
         <action name="saveOrders" method="saveOrUpdate" class="actions.OrdersAction">
             <result name="success">/account.jsp</result>
         </action>
+        <action name="ordersDetail" method="findDetails" class="actions.OrdersAction">
+            <result name="success">/ordersDetail.jsp</result>
+        </action>
         
 
         <action name="listAddress" class="actions.AddressAction">

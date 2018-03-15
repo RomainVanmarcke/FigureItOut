@@ -43,6 +43,7 @@
                                     <td>User</td>
                                     <td>Date</td>
                                     <td>Status</td>
+                                    <td>Detail</td>
                                     </thead>
                                     <tbody>
                                         <s:iterator value="ordersListByUser">
@@ -53,6 +54,12 @@
                                                 <td><s:property value="[0]['user']['name']" /></td>
                                                 <td><s:property value="[0]['date']" /></td>
                                                 <td><s:property value="[0]['status']" /></td>
+                                                <td>
+                                                    <s:form action="ordersDetail" cssClass="formTable">
+                                                        <s:hidden name="orders.id" value="%{[0]['id']}"/>
+                                                        <s:submit value="Detail"/>
+                                                    </s:form>
+                                                </td>
                                             </tr>
                                         </s:iterator>
                                     </tbody>
