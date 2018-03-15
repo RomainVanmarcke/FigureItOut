@@ -34,8 +34,8 @@ public class ItemDaoServices extends AbstractDaoServices<Item>{
     public List<Item> search(int idCategory, int minPrice, int maxPrice, int minQuantity) {
         Session session = hibernate.HibernateSessionManager.getSession();
         session.beginTransaction();
-        String sql = "select i from Category c "
-                + "join fetch c.items as i "
+        String sql = "from Item i "
+                + "join fetch i.categories as c "
                 + "where i.price>:minPrice and i.price <:maxPrice "
                 + "and i.quantity > :minQuantity and c.id = :idCategory";
         Query query = session.createQuery(sql);

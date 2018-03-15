@@ -74,7 +74,10 @@
                             <s:iterator value="items">
                                 <div class="">
                                     <h3><s:property value="['name']"/></h3>
+                                    <p><b>Price: </b><s:property value="['price']"/></p>
+                                    <p><b>Description: </b><s:property value="['description']"/></p>
                                 </div>
+                                <hr>
                             </s:iterator>
                         </s:else>
                     </div>
