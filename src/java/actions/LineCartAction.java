@@ -110,7 +110,7 @@ public class LineCartAction {
         int itemPrice = Integer.parseInt(request.getParameter("Item.price"));
 //        System.out.println("IDDDDDDDD: " + linecartID);
         User user = userDAO.findUserById(userID);
-        Item item = itemDAO.listUserById(itemID);
+        Item item = itemDAO.findItemById(itemID);
         linecartDAO.addLinecart(user, item, itemQuantity, itemPrice);
         return SUCCESS;
     }
