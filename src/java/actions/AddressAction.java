@@ -48,6 +48,8 @@ public class AddressAction {
     }
     
     public String saveOrUpdate() {
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        address.setUser(userDAO.findUserById((Integer) session.get("userId")));
         addressDAO.saveOrUpdateAddress(address);
         return SUCCESS;
     }

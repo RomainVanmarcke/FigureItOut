@@ -31,11 +31,11 @@
                             </thead>
                             <tbody>
                                 <s:iterator value="orderslinesList">
-                                <tr>
-                                    <td><s:property value="['item']['name']" /></td>
-                                    <td><s:property value="['quantity']"/></td>
-                                    <td><s:property value="['price']" /></td>
-                                </tr>
+                                    <tr>
+                                        <td><s:property value="['item']['name']" /></td>
+                                        <td><s:property value="['quantity']"/></td>
+                                        <td><s:property value="['price']" /></td>
+                                    </tr>
                                 </s:iterator>
                             </tbody>
 

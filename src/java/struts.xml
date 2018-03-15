@@ -80,7 +80,7 @@
         </action>
         <action name="saveOrders" method="saveOrUpdate" class="actions.OrdersAction">
             <interceptor-ref name="loginStack"></interceptor-ref>
-            <result name="success">/account.jsp</result>
+            <result name="success" type="redirect">/findOrdersByUser</result>
         </action>
         <action name="ordersDetail" method="findDetails" class="actions.OrdersAction">
             <interceptor-ref name="loginStack"></interceptor-ref>
@@ -97,7 +97,7 @@
         </action>
         <action name="saveOrUpdateAddress" method="saveOrUpdate" class="actions.AddressAction">
             <interceptor-ref name="loginStack"></interceptor-ref>
-            <result name="success" type="redirect">/listAddress</result>
+            <result name="success" type="redirect">/findOrdersByUser</result>
         </action>
         
         
