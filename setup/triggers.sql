@@ -1,16 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- * Author:  gaeta
- * Created: 13 mars 2018
- */
-
-
---- Trigger Item
-
 DELIMITER |
 CREATE TRIGGER `item_tag_insert` BEFORE INSERT ON `item`
 FOR EACH ROW 

@@ -20,21 +20,21 @@
         </global-results>
 
         <action name="loginUser" method="login" class="actions.LoginAction">
-            <result name="success">/index.jsp</result>
+            <result name="success">/home.jsp</result>
             <result name="input">/login.jsp</result>
         </action>
         <action name="logoutUser" method="logout" class="actions.LoginAction">
-            <result name="success">/index.jsp</result>
+            <result name="success">/home.jsp</result>
         </action>
         <action name="saveOrUpdateUser" method="saveOrUpdate" class="actions.UserAction">
-            <result name="success" type="redirect">listUser</result>
+            <result name="success" type="redirect">/account.jsp</result>
         </action>
         <action name="listUser" method="list" class="actions.UserAction">
             <interceptor-ref name="loginStack"></interceptor-ref>
             <result name="success">/users.jsp</result>
         </action>
         <action name="editUser" method="edit" class="actions.UserAction">
-            <result name="success">/users.jsp</result>
+            <result name="success">/editUser.jsp</result>
         </action>
         <action name="deleteUser" method="delete" class="actions.UserAction">
             <result name="success" type="redirect">listUser</result>
@@ -49,6 +49,7 @@
         </action>
      
         <action name="ItemAction" class="actions.ItemAction">
+            <interceptor-ref name="loginStack"></interceptor-ref>
             <result>/listItem.jsp</result>      
              <result name="error">/login.jsp</result>
         </action>
@@ -62,21 +63,27 @@
       
      
         <action name="listOrders" class="actions.OrdersAction">
+            <interceptor-ref name="loginStack"></interceptor-ref>
             <result>/listOrders.jsp</result>
         </action>
         <action name="findOrdersByDate" method="findByDate" class="actions.OrdersAction">
+            <interceptor-ref name="loginStack"></interceptor-ref>
             <result name="success">/account.jsp</result>
         </action>
         <action name="findOrdersByUser" method="findByUser" class="actions.OrdersAction">
+            <interceptor-ref name="loginStack"></interceptor-ref>
             <result name="success">/account.jsp</result>
         </action>
         <action name="orderCart" method="findWithAddressByUser" class="actions.ShippinginfoAction">
+            <interceptor-ref name="loginStack"></interceptor-ref>
             <result name="success">/orders.jsp</result>
         </action>
         <action name="saveOrders" method="saveOrUpdate" class="actions.OrdersAction">
+            <interceptor-ref name="loginStack"></interceptor-ref>
             <result name="success">/account.jsp</result>
         </action>
         <action name="ordersDetail" method="findDetails" class="actions.OrdersAction">
+            <interceptor-ref name="loginStack"></interceptor-ref>
             <result name="success">/ordersDetail.jsp</result>
         </action>
         
@@ -85,14 +92,17 @@
             <result>/listAddress.jsp</result>
         </action>
         <action name="findAddressByUser" method="findByUser" class="actions.AddressAction">
+            <interceptor-ref name="loginStack"></interceptor-ref>
             <result name="success">/account.jsp</result>
         </action>
         <action name="saveOrUpdateAddress" method="saveOrUpdate" class="actions.AddressAction">
+            <interceptor-ref name="loginStack"></interceptor-ref>
             <result name="success" type="redirect">/listAddress</result>
         </action>
         
         
         <action name="LineCartAction" class="actions.LineCartAction">
+            <interceptor-ref name="loginStack"></interceptor-ref>
             <result name="success">/cart.jsp</result>      
         </action>
         <action name="deleteLinecart" method="delete" class="actions.LineCartAction">
@@ -102,6 +112,7 @@
             <result name="success" type="redirect">/LineCartAction</result>     
         </action>
         <action name="addItemToLinecart" method="addLinecart" class="actions.LineCartAction">
+            <interceptor-ref name="loginStack"></interceptor-ref>
             <result name="success" type="redirect">/home</result>     
         </action>
         
@@ -112,6 +123,10 @@
         <action name="advancedSearch" class="actions.SearchAction" method="advancedSearch">
             <result name="success">/advanced_search.jsp</result>
         </action>
+        <action name="advancedSearchResults" class="actions.SearchAction" method="advancedSearchResults">
+            <result name="success">/advanced_search.jsp</result>
+        </action>
+        
         
         
     </package>
