@@ -84,6 +84,7 @@
 
                                 <li class=""><a href="four-col.jsp">Four Column</a></li>
                                 <li class=""><a href="general.jsp">General Content</a></li>
+                                <li class=""><a href="advanced_search.jsp">Advanced Search</a></li>
                             </ul>
                             
                             <form action="quickSearch" method="POST" class="navbar-search pull-left">

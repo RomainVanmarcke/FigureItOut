@@ -100,6 +100,10 @@
         <action name="quickSearch" class="actions.SearchAction" method="quickSearch">
             <result name="success">/searchItems.jsp</result>
         </action>
+        <action name="advancedSearch" class="actions.SearchAction" method="advancedSearch">
+            <result name="success">/advanced_search.jsp</result>
+        </action>
+        
         
     </package>
 </struts>
