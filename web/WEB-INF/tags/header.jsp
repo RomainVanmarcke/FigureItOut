@@ -103,7 +103,7 @@
 
                                             <s:form action="loginUser">
                                                 <s:textfield name="user.name" label="Username"></s:textfield>
-                                                <s:password name="user.firstName" label="FirstName"></s:password>
+                                                <s:password name="user.firstName" label="Password"></s:password>
                                                 <s:submit value="Login"></s:submit>
 
                                             </s:form>

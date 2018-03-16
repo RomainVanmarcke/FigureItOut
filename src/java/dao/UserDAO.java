@@ -11,6 +11,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import entities.User;
 import org.hibernate.Transaction;
+import services.Password;
 
 /**
  *
@@ -21,18 +22,17 @@ public class UserDAO {
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = session.beginTransaction();
 
-    public User checkCredentials(String name, String firstName) {
-        String sql = " from User u where u.name=:name and u.firstName=:firstName";
+    public User checkCredentials(String name, String password) {
+        String sql = " from User u where u.name=:name";
         Query query = session.createQuery(sql);
         query.setParameter("name", name);
-        query.setParameter("firstName", firstName);
         List<User> list = query.list();
-        if (list.size() > 0) {
+        if (list.size() > 0 && password.equals(list.get(0).getAuth().getPassword())) {
             return list.get(0);
         }
         return null;
     }
-    
+
     public User findUserById(Integer id) {
         User user = null;
         try {
@@ -56,7 +56,6 @@ public class UserDAO {
     public void saveOrUpdateUser(User user) {
         try {
             session.saveOrUpdate(user.getAuth());
-            System.out.println(user.getAuth().getId());
             session.saveOrUpdate(user);
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -65,10 +64,12 @@ public class UserDAO {
         }
     }
 
-    public void deleteUser(long userId) {
+    public void deleteUser(Integer userId) {
         try {
             User user = (User) session.get(User.class, userId);
-            session.delete(user);
+            user.setDeleted(true);
+            session.saveOrUpdate(user);
+            session.getTransaction().commit();
         } catch (Exception e) {
             transaction.rollback();
             e.printStackTrace();

@@ -123,7 +123,7 @@ CREATE TABLE `user` (
   `FirstName` varchar(255) DEFAULT NULL,
   `Mail` varchar(255) DEFAULT NULL,
   `SignupDate` varchar(255) DEFAULT NULL,
-  `Deleted` bit(1) DEFAULT NULL,
+  `Deleted` bit(1) NOT NULL DEFAULT FALSE,
   `Role` enum('Admin','Employee','Client') NOT NULL,
   `AuthID` int(10) DEFAULT NULL,
   `Tag` text DEFAULT NULL,
@@ -132,106 +132,106 @@ CREATE TABLE `user` (
   CONSTRAINT `user_ibfk_1` FOREIGN KEY (`AuthID`) REFERENCES `auth` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
 
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (1, 'Pfannerstill', 'Annamae', 'funk.jamel@wiegand.com', '1989-04-04', NULL, 'Admin', 97, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (2, 'Smith', 'Elvera', 'grunolfsson@wunschbins.org', '1999-07-30', NULL, 'Client', 80, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (3, 'Pollich', 'Angelo', 'genoveva.cummerata@koelpinpredovic.com', '1985-08-15', NULL, 'Client', 5, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (4, 'Dietrich', 'Micah', 'wrice@gibson.com', '1977-02-14', NULL, 'Admin', 82, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (5, 'Hermiston', 'Bernita', 'ellie54@yahoo.com', '2012-12-29', NULL, 'Employee', 23, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (6, 'Kertzmann', 'Gregg', 'iliana.nader@blanda.com', '1989-04-05', NULL, 'Client', 42, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (7, 'Schimmel', 'Wendy', 'hulda.johnson@sporer.info', '1972-07-04', NULL, 'Admin', 9, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (8, 'Swaniawski', 'Mohamed', 'mcclure.harmony@bogandenesik.com', '2008-05-30', NULL, 'Admin', 14, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (9, 'Rath', 'Taurean', 'cheidenreich@oconnervandervort.info', '2001-09-27', NULL, 'Admin', 15, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (10, 'Cassin', 'Owen', 'durgan.rashawn@gmail.com', '1997-06-25', NULL, 'Admin', 21, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (11, 'Schoen', 'Barney', 'columbus95@gmail.com', '1972-11-05', NULL, 'Admin', 68, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (12, 'Stoltenberg', 'Norma', 'upton.ebba@hotmail.com', '2015-12-21', NULL, 'Client', 72, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (13, 'Bosco', 'Hazel', 'adickens@kris.info', '2009-05-10', NULL, 'Employee', 83, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (14, 'Corwin', 'Luigi', 'qhahn@hotmail.com', '1980-06-26', NULL, 'Admin', 33, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (15, 'Herzog', 'Marietta', 'marianne.kreiger@gmail.com', '1980-09-14', NULL, 'Admin', 8, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (16, 'Roob', 'Owen', 'giuseppe.becker@lynch.info', '1971-07-19', NULL, 'Client', 5, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (17, 'Kuhic', 'Alexzander', 'maeve99@hotmail.com', '2003-05-11', NULL, 'Admin', 24, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (18, 'Schaefer', 'Sallie', 'eva.bogisich@hotmail.com', '1975-11-21', NULL, 'Employee', 49, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (19, 'Wiza', 'Adelbert', 'pbarton@hilll.com', '1994-09-06', NULL, 'Admin', 79, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (20, 'Bernier', 'Davonte', 'germaine46@gmail.com', '1975-01-15', NULL, 'Client', 71, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (21, 'Labadie', 'Letha', 'kasandra.osinski@hintz.com', '2002-10-29', NULL, 'Admin', 85, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (22, 'Wyman', 'Pedro', 'ftreutel@rippin.biz', '2011-05-02', NULL, 'Client', 96, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (23, 'Moen', 'Eliane', 'ruecker.claude@corwinschuppe.com', '1988-12-14', NULL, 'Employee', 39, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (24, 'Skiles', 'Callie', 'fay.fletcher@yahoo.com', '1975-06-24', NULL, 'Employee', 94, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (25, 'Wilkinson', 'Benton', 'giovanna91@watsicahuels.com', '1977-02-23', NULL, 'Employee', 49, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (26, 'Osinski', 'Carolyn', 'kacey.durgan@gmail.com', '2014-08-31', NULL, 'Employee', 5, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (27, 'Hilpert', 'Hershel', 'antwon.kunze@considine.biz', '1986-11-12', NULL, 'Client', 26, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (28, 'Russel', 'Lennie', 'wuckert.ethan@yahoo.com', '1994-07-10', NULL, 'Admin', 43, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (29, 'Ziemann', 'Korey', 'robin47@abbottweimann.info', '1974-01-14', NULL, 'Client', 31, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (30, 'McDermott', 'Kaylah', 'okuneva.trisha@hotmail.com', '2013-10-24', NULL, 'Employee', 53, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (31, 'Cole', 'Maybell', 'zo\'reilly@gmail.com', '1978-07-03', NULL, 'Admin', 59, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (32, 'Homenick', 'Ignatius', 'keith.abshire@monahantreutel.com', '2017-08-06', NULL, 'Client', 28, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (33, 'Hintz', 'Nelda', 'waelchi.enrique@bartolettilittel.org', '1990-07-02', NULL, 'Admin', 33, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (34, 'Bode', 'Joan', 'weimann.damon@gmail.com', '2015-08-04', NULL, 'Admin', 63, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (35, 'Daniel', 'Kayden', 'arnaldo.mante@gmail.com', '1971-07-24', NULL, 'Admin', 9, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (36, 'Emmerich', 'Toney', 'ko\'keefe@langworthquigley.org', '2015-12-29', NULL, 'Admin', 55, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (37, 'Becker', 'Naomi', 'janiya.leannon@gmail.com', '1977-06-14', NULL, 'Admin', 5, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (38, 'Weimann', 'Anderson', 'satterfield.ardith@ruecker.com', '2008-12-26', NULL, 'Client', 18, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (39, 'Schmeler', 'Trent', 'qtreutel@hotmail.com', '2001-08-26', NULL, 'Employee', 69, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (40, 'Romaguera', 'Liam', 'lexus86@yahoo.com', '2015-09-01', NULL, 'Client', 19, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (41, 'Turner', 'Ryley', 'agustin.von@fisher.org', '2012-10-26', NULL, 'Employee', 38, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (42, 'Runolfsdottir', 'Wilson', 'friesen.horacio@murray.com', '1973-03-08', NULL, 'Admin', 36, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (43, 'Kuvalis', 'Tre', 'brandon15@stoltenbergzieme.info', '2005-05-17', NULL, 'Employee', 90, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (44, 'Von', 'Elda', 'schamberger.trycia@yahoo.com', '1984-12-07', NULL, 'Client', 21, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (45, 'Corwin', 'Jennifer', 'ischoen@renner.biz', '1992-03-19', NULL, 'Employee', 69, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (46, 'Bednar', 'Abagail', 'hwest@gmail.com', '2017-04-16', NULL, 'Employee', 98, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (47, 'Wolff', 'Patricia', 'donavon53@yahoo.com', '1971-02-14', NULL, 'Employee', 26, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (48, 'Bergnaum', 'Francisco', 'leffler.marisol@yahoo.com', '1998-06-01', NULL, 'Employee', 92, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (49, 'Heller', 'Jessyca', 'hobart75@gmail.com', '2006-07-08', NULL, 'Admin', 47, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (50, 'Larkin', 'Gunner', 'gillian88@yahoo.com', '1975-07-27', NULL, 'Client', 4, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (51, 'Smith', 'Jo', 'brisa.veum@lindgren.biz', '1971-12-15', NULL, 'Employee', 62, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (52, 'Kovacek', 'Isabelle', 'dgutkowski@ferry.net', '1987-01-18', NULL, 'Admin', 31, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (53, 'Simonis', 'Aletha', 'tfritsch@brekke.com', '1977-01-01', NULL, 'Employee', 100, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (54, 'Toy', 'Orland', 'gdare@yahoo.com', '1985-11-03', NULL, 'Admin', 1, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (55, 'Quitzon', 'Shanon', 'rocky51@nikolaus.com', '1981-04-06', NULL, 'Client', 24, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (56, 'Donnelly', 'Tommie', 'yost.kayley@oreillyauer.com', '2005-09-18', NULL, 'Client', 48, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (57, 'Boyle', 'Yolanda', 'weissnat.ryann@langosh.org', '1988-01-24', NULL, 'Employee', 5, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (58, 'Abshire', 'Aiden', 'dschamberger@hotmail.com', '1997-07-01', NULL, 'Client', 49, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (59, 'Lang', 'Garnett', 'lharris@daugherty.net', '1974-04-21', NULL, 'Employee', 91, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (60, 'Walsh', 'Werner', 'jaylan65@kozeymraz.info', '2007-03-30', NULL, 'Admin', 36, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (61, 'Casper', 'Edwina', 'joy.stiedemann@yahoo.com', '1980-04-05', NULL, 'Admin', 2, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (62, 'Borer', 'Alvis', 'mcdermott.golden@lynchkonopelski.com', '2017-11-26', NULL, 'Employee', 50, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (63, 'Harris', 'Tevin', 'morissette.neal@gislasonwilkinson.com', '1995-08-20', NULL, 'Admin', 63, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (64, 'Swaniawski', 'Josie', 'magali.torphy@walker.com', '1988-03-02', NULL, 'Admin', 35, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (65, 'Jakubowski', 'Stephon', 'macejkovic.citlalli@yahoo.com', '1991-11-30', NULL, 'Employee', 13, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (66, 'Beatty', 'Arthur', 'jovany.rau@aufderharsmith.com', '1994-02-14', NULL, 'Employee', 72, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (67, 'Treutel', 'Dorothea', 'pkoss@doylegrimes.com', '2005-11-26', NULL, 'Admin', 89, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (68, 'Pollich', 'Rashad', 'thurman.heathcote@lesch.info', '2008-07-09', NULL, 'Admin', 17, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (69, 'Strosin', 'Lauriane', 'mia71@gmail.com', '2006-07-19', NULL, 'Admin', 89, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (70, 'Beahan', 'Ernie', 'yolanda58@dubuque.com', '1970-04-06', NULL, 'Admin', 58, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (71, 'Abbott', 'Maggie', 'missouri.bogan@yahoo.com', '1998-09-21', NULL, 'Client', 36, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (72, 'Kemmer', 'Rose', 'creola.boyer@beier.com', '1981-03-27', NULL, 'Employee', 27, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (73, 'Wisozk', 'Frederick', 'ogorczany@hotmail.com', '2004-05-02', NULL, 'Client', 93, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (74, 'Hansen', 'Richie', 'kfranecki@hotmail.com', '2006-12-01', NULL, 'Admin', 25, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (75, 'Ziemann', 'Bethel', 'sasha38@rodriguez.com', '1998-08-23', NULL, 'Employee', 47, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (76, 'Willms', 'Scarlett', 'bauch.abdul@hotmail.com', '1994-01-19', NULL, 'Admin', 61, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (77, 'Thompson', 'Eino', 'vern84@oberbrunner.com', '1978-08-21', NULL, 'Employee', 23, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (78, 'Bins', 'Cathrine', 'bryon50@gmail.com', '1974-12-31', NULL, 'Employee', 72, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (79, 'McDermott', 'Maxime', 'swaniawski.rubye@mckenzieborer.com', '1985-10-12', NULL, 'Admin', 53, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (80, 'Turner', 'Isabelle', 'tessie.wunsch@konopelski.com', '1985-02-16', NULL, 'Admin', 70, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (81, 'Wehner', 'Francesco', 'vaufderhar@gmail.com', '1995-08-28', NULL, 'Employee', 76, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (82, 'Schinner', 'Foster', 'khalil78@gmail.com', '1981-03-19', NULL, 'Client', 15, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (83, 'Lang', 'Bria', 'hodkiewicz.erik@gmail.com', '2011-10-26', NULL, 'Employee', 100, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (84, 'Hoeger', 'Sunny', 'kuhn.mervin@yahoo.com', '1994-10-25', NULL, 'Employee', 75, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (85, 'Armstrong', 'Freeman', 'fhermiston@crona.biz', '1995-10-12', NULL, 'Employee', 15, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (86, 'Kunde', 'Maria', 'jennyfer.schowalter@yahoo.com', '2012-09-21', NULL, 'Admin', 24, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (87, 'Erdman', 'Petra', 'bartell.martine@gmail.com', '2013-04-07', NULL, 'Admin', 23, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (88, 'Parker', 'Marisa', 'gaylord.pouros@konopelskibeatty.org', '2014-01-28', NULL, 'Employee', 20, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (89, 'Walter', 'Alan', 'toby37@yahoo.com', '1993-10-23', NULL, 'Employee', 72, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (90, 'Johnson', 'Scot', 'alayna.kreiger@hills.com', '2006-03-02', NULL, 'Employee', 13, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (91, 'Homenick', 'Sallie', 'adelia.harris@kuphal.com', '2006-02-25', NULL, 'Employee', 56, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (92, 'Rippin', 'Webster', 'rowena.swift@gislasonsatterfield.com', '2014-03-29', NULL, 'Admin', 74, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (93, 'Johnson', 'Elwin', 'zboncak.patricia@hotmail.com', '1976-04-18', NULL, 'Admin', 62, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (94, 'Keeling', 'Deangelo', 'mcdermott.flo@satterfield.com', '1974-10-22', NULL, 'Client', 18, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (95, 'Wisozk', 'Solon', 'cale49@gusikowski.biz', '2002-01-14', NULL, 'Employee', 8, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (96, 'Schultz', 'Caleigh', 'aliya.o\'reilly@yahoo.com', '1987-11-17', NULL, 'Admin', 75, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (97, 'Hettinger', 'Kayley', 'monserrat44@gmail.com', '1993-01-20', NULL, 'Admin', 89, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (98, 'Turner', 'Samara', 'kenneth46@yahoo.com', '2003-11-03', NULL, 'Admin', 97, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (99, 'Klocko', 'Wilfredo', 'tkessler@damore.biz', '2017-08-20', NULL, 'Client', 91, NULL);
-INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (100, 'Okuneva', 'Angeline', 'dietrich.alvera@zboncak.net', '1988-06-06', NULL, 'Employee', 78, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (1, 'Pfannerstill', 'Annamae', 'funk.jamel@wiegand.com', '1989-04-04', FALSE, 'Admin', 97, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (2, 'Smith', 'Elvera', 'grunolfsson@wunschbins.org', '1999-07-30', FALSE, 'Client', 80, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (3, 'Pollich', 'Angelo', 'genoveva.cummerata@koelpinpredovic.com', '1985-08-15', FALSE, 'Client', 5, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (4, 'Dietrich', 'Micah', 'wrice@gibson.com', '1977-02-14', FALSE, 'Admin', 82, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (5, 'Hermiston', 'Bernita', 'ellie54@yahoo.com', '2012-12-29', FALSE, 'Employee', 23, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (6, 'Kertzmann', 'Gregg', 'iliana.nader@blanda.com', '1989-04-05', FALSE, 'Client', 42, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (7, 'Schimmel', 'Wendy', 'hulda.johnson@sporer.info', '1972-07-04', FALSE, 'Admin', 9, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (8, 'Swaniawski', 'Mohamed', 'mcclure.harmony@bogandenesik.com', '2008-05-30', FALSE, 'Admin', 14, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (9, 'Rath', 'Taurean', 'cheidenreich@oconnervandervort.info', '2001-09-27', FALSE, 'Admin', 15, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (10, 'Cassin', 'Owen', 'durgan.rashawn@gmail.com', '1997-06-25', FALSE, 'Admin', 21, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (11, 'Schoen', 'Barney', 'columbus95@gmail.com', '1972-11-05', FALSE, 'Admin', 68, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (12, 'Stoltenberg', 'Norma', 'upton.ebba@hotmail.com', '2015-12-21', FALSE, 'Client', 72, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (13, 'Bosco', 'Hazel', 'adickens@kris.info', '2009-05-10', FALSE, 'Employee', 83, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (14, 'Corwin', 'Luigi', 'qhahn@hotmail.com', '1980-06-26', FALSE, 'Admin', 33, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (15, 'Herzog', 'Marietta', 'marianne.kreiger@gmail.com', '1980-09-14', FALSE, 'Admin', 8, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (16, 'Roob', 'Owen', 'giuseppe.becker@lynch.info', '1971-07-19', FALSE, 'Client', 5, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (17, 'Kuhic', 'Alexzander', 'maeve99@hotmail.com', '2003-05-11', FALSE, 'Admin', 24, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (18, 'Schaefer', 'Sallie', 'eva.bogisich@hotmail.com', '1975-11-21', FALSE, 'Employee', 49, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (19, 'Wiza', 'Adelbert', 'pbarton@hilll.com', '1994-09-06', FALSE, 'Admin', 79, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (20, 'Bernier', 'Davonte', 'germaine46@gmail.com', '1975-01-15', FALSE, 'Client', 71, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (21, 'Labadie', 'Letha', 'kasandra.osinski@hintz.com', '2002-10-29', FALSE, 'Admin', 85, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (22, 'Wyman', 'Pedro', 'ftreutel@rippin.biz', '2011-05-02', FALSE, 'Client', 96, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (23, 'Moen', 'Eliane', 'ruecker.claude@corwinschuppe.com', '1988-12-14', FALSE, 'Employee', 39, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (24, 'Skiles', 'Callie', 'fay.fletcher@yahoo.com', '1975-06-24', FALSE, 'Employee', 94, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (25, 'Wilkinson', 'Benton', 'giovanna91@watsicahuels.com', '1977-02-23', FALSE, 'Employee', 49, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (26, 'Osinski', 'Carolyn', 'kacey.durgan@gmail.com', '2014-08-31', FALSE, 'Employee', 5, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (27, 'Hilpert', 'Hershel', 'antwon.kunze@considine.biz', '1986-11-12', FALSE, 'Client', 26, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (28, 'Russel', 'Lennie', 'wuckert.ethan@yahoo.com', '1994-07-10', FALSE, 'Admin', 43, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (29, 'Ziemann', 'Korey', 'robin47@abbottweimann.info', '1974-01-14', FALSE, 'Client', 31, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (30, 'McDermott', 'Kaylah', 'okuneva.trisha@hotmail.com', '2013-10-24', FALSE, 'Employee', 53, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (31, 'Cole', 'Maybell', 'zo\'reilly@gmail.com', '1978-07-03', FALSE, 'Admin', 59, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (32, 'Homenick', 'Ignatius', 'keith.abshire@monahantreutel.com', '2017-08-06', FALSE, 'Client', 28, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (33, 'Hintz', 'Nelda', 'waelchi.enrique@bartolettilittel.org', '1990-07-02', FALSE, 'Admin', 33, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (34, 'Bode', 'Joan', 'weimann.damon@gmail.com', '2015-08-04', FALSE, 'Admin', 63, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (35, 'Daniel', 'Kayden', 'arnaldo.mante@gmail.com', '1971-07-24', FALSE, 'Admin', 9, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (36, 'Emmerich', 'Toney', 'ko\'keefe@langworthquigley.org', '2015-12-29', FALSE, 'Admin', 55, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (37, 'Becker', 'Naomi', 'janiya.leannon@gmail.com', '1977-06-14', FALSE, 'Admin', 5, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (38, 'Weimann', 'Anderson', 'satterfield.ardith@ruecker.com', '2008-12-26', FALSE, 'Client', 18, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (39, 'Schmeler', 'Trent', 'qtreutel@hotmail.com', '2001-08-26', FALSE, 'Employee', 69, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (40, 'Romaguera', 'Liam', 'lexus86@yahoo.com', '2015-09-01', FALSE, 'Client', 19, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (41, 'Turner', 'Ryley', 'agustin.von@fisher.org', '2012-10-26', FALSE, 'Employee', 38, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (42, 'Runolfsdottir', 'Wilson', 'friesen.horacio@murray.com', '1973-03-08', FALSE, 'Admin', 36, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (43, 'Kuvalis', 'Tre', 'brandon15@stoltenbergzieme.info', '2005-05-17', FALSE, 'Employee', 90, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (44, 'Von', 'Elda', 'schamberger.trycia@yahoo.com', '1984-12-07', FALSE, 'Client', 21, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (45, 'Corwin', 'Jennifer', 'ischoen@renner.biz', '1992-03-19', FALSE, 'Employee', 69, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (46, 'Bednar', 'Abagail', 'hwest@gmail.com', '2017-04-16', FALSE, 'Employee', 98, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (47, 'Wolff', 'Patricia', 'donavon53@yahoo.com', '1971-02-14', FALSE, 'Employee', 26, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (48, 'Bergnaum', 'Francisco', 'leffler.marisol@yahoo.com', '1998-06-01', FALSE, 'Employee', 92, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (49, 'Heller', 'Jessyca', 'hobart75@gmail.com', '2006-07-08', FALSE, 'Admin', 47, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (50, 'Larkin', 'Gunner', 'gillian88@yahoo.com', '1975-07-27', FALSE, 'Client', 4, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (51, 'Smith', 'Jo', 'brisa.veum@lindgren.biz', '1971-12-15', FALSE, 'Employee', 62, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (52, 'Kovacek', 'Isabelle', 'dgutkowski@ferry.net', '1987-01-18', FALSE, 'Admin', 31, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (53, 'Simonis', 'Aletha', 'tfritsch@brekke.com', '1977-01-01', FALSE, 'Employee', 100, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (54, 'Toy', 'Orland', 'gdare@yahoo.com', '1985-11-03', FALSE, 'Admin', 1, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (55, 'Quitzon', 'Shanon', 'rocky51@nikolaus.com', '1981-04-06', FALSE, 'Client', 24, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (56, 'Donnelly', 'Tommie', 'yost.kayley@oreillyauer.com', '2005-09-18', FALSE, 'Client', 48, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (57, 'Boyle', 'Yolanda', 'weissnat.ryann@langosh.org', '1988-01-24', FALSE, 'Employee', 5, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (58, 'Abshire', 'Aiden', 'dschamberger@hotmail.com', '1997-07-01', FALSE, 'Client', 49, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (59, 'Lang', 'Garnett', 'lharris@daugherty.net', '1974-04-21', FALSE, 'Employee', 91, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (60, 'Walsh', 'Werner', 'jaylan65@kozeymraz.info', '2007-03-30', FALSE, 'Admin', 36, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (61, 'Casper', 'Edwina', 'joy.stiedemann@yahoo.com', '1980-04-05', FALSE, 'Admin', 2, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (62, 'Borer', 'Alvis', 'mcdermott.golden@lynchkonopelski.com', '2017-11-26', FALSE, 'Employee', 50, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (63, 'Harris', 'Tevin', 'morissette.neal@gislasonwilkinson.com', '1995-08-20', FALSE, 'Admin', 63, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (64, 'Swaniawski', 'Josie', 'magali.torphy@walker.com', '1988-03-02', FALSE, 'Admin', 35, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (65, 'Jakubowski', 'Stephon', 'macejkovic.citlalli@yahoo.com', '1991-11-30', FALSE, 'Employee', 13, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (66, 'Beatty', 'Arthur', 'jovany.rau@aufderharsmith.com', '1994-02-14', FALSE, 'Employee', 72, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (67, 'Treutel', 'Dorothea', 'pkoss@doylegrimes.com', '2005-11-26', FALSE, 'Admin', 89, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (68, 'Pollich', 'Rashad', 'thurman.heathcote@lesch.info', '2008-07-09', FALSE, 'Admin', 17, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (69, 'Strosin', 'Lauriane', 'mia71@gmail.com', '2006-07-19', FALSE, 'Admin', 89, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (70, 'Beahan', 'Ernie', 'yolanda58@dubuque.com', '1970-04-06', FALSE, 'Admin', 58, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (71, 'Abbott', 'Maggie', 'missouri.bogan@yahoo.com', '1998-09-21', FALSE, 'Client', 36, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (72, 'Kemmer', 'Rose', 'creola.boyer@beier.com', '1981-03-27', FALSE, 'Employee', 27, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (73, 'Wisozk', 'Frederick', 'ogorczany@hotmail.com', '2004-05-02', FALSE, 'Client', 93, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (74, 'Hansen', 'Richie', 'kfranecki@hotmail.com', '2006-12-01', FALSE, 'Admin', 25, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (75, 'Ziemann', 'Bethel', 'sasha38@rodriguez.com', '1998-08-23', FALSE, 'Employee', 47, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (76, 'Willms', 'Scarlett', 'bauch.abdul@hotmail.com', '1994-01-19', FALSE, 'Admin', 61, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (77, 'Thompson', 'Eino', 'vern84@oberbrunner.com', '1978-08-21', FALSE, 'Employee', 23, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (78, 'Bins', 'Cathrine', 'bryon50@gmail.com', '1974-12-31', FALSE, 'Employee', 72, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (79, 'McDermott', 'Maxime', 'swaniawski.rubye@mckenzieborer.com', '1985-10-12', FALSE, 'Admin', 53, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (80, 'Turner', 'Isabelle', 'tessie.wunsch@konopelski.com', '1985-02-16', FALSE, 'Admin', 70, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (81, 'Wehner', 'Francesco', 'vaufderhar@gmail.com', '1995-08-28', FALSE, 'Employee', 76, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (82, 'Schinner', 'Foster', 'khalil78@gmail.com', '1981-03-19', FALSE, 'Client', 15, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (83, 'Lang', 'Bria', 'hodkiewicz.erik@gmail.com', '2011-10-26', FALSE, 'Employee', 100, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (84, 'Hoeger', 'Sunny', 'kuhn.mervin@yahoo.com', '1994-10-25', FALSE, 'Employee', 75, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (85, 'Armstrong', 'Freeman', 'fhermiston@crona.biz', '1995-10-12', FALSE, 'Employee', 15, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (86, 'Kunde', 'Maria', 'jennyfer.schowalter@yahoo.com', '2012-09-21', FALSE, 'Admin', 24, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (87, 'Erdman', 'Petra', 'bartell.martine@gmail.com', '2013-04-07', FALSE, 'Admin', 23, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (88, 'Parker', 'Marisa', 'gaylord.pouros@konopelskibeatty.org', '2014-01-28', FALSE, 'Employee', 20, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (89, 'Walter', 'Alan', 'toby37@yahoo.com', '1993-10-23', FALSE, 'Employee', 72, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (90, 'Johnson', 'Scot', 'alayna.kreiger@hills.com', '2006-03-02', FALSE, 'Employee', 13, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (91, 'Homenick', 'Sallie', 'adelia.harris@kuphal.com', '2006-02-25', FALSE, 'Employee', 56, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (92, 'Rippin', 'Webster', 'rowena.swift@gislasonsatterfield.com', '2014-03-29', FALSE, 'Admin', 74, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (93, 'Johnson', 'Elwin', 'zboncak.patricia@hotmail.com', '1976-04-18', FALSE, 'Admin', 62, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (94, 'Keeling', 'Deangelo', 'mcdermott.flo@satterfield.com', '1974-10-22', FALSE, 'Client', 18, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (95, 'Wisozk', 'Solon', 'cale49@gusikowski.biz', '2002-01-14', FALSE, 'Employee', 8, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (96, 'Schultz', 'Caleigh', 'aliya.o\'reilly@yahoo.com', '1987-11-17', FALSE, 'Admin', 75, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (97, 'Hettinger', 'Kayley', 'monserrat44@gmail.com', '1993-01-20', FALSE, 'Admin', 89, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (98, 'Turner', 'Samara', 'kenneth46@yahoo.com', '2003-11-03', FALSE, 'Admin', 97, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (99, 'Klocko', 'Wilfredo', 'tkessler@damore.biz', '2017-08-20', FALSE, 'Client', 91, NULL);
+INSERT INTO user (`ID`, `Name`, `FirstName`, `Mail`, `SignupDate`, `Deleted`, `Role`, `AuthID`,`Tag`) VALUES (100, 'Okuneva', 'Angeline', 'dietrich.alvera@zboncak.net', '1988-06-06', FALSE, 'Employee', 78, NULL);
 
 
 #
@@ -849,23 +849,23 @@ CREATE TABLE `category` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
-DELIMITER |
-CREATE TRIGGER `item_category_tag_insert` BEFORE INSERT ON `category`
-FOR EACH ROW 
-BEGIN
+-- DELIMITER |
+-- CREATE TRIGGER `item_category_tag_insert` BEFORE INSERT ON `category`
+-- FOR EACH ROW 
+-- BEGIN
   
 
-  SET NEW.TAG = CONCAT(NEW.name, ' ', NEW.description, ' ', NEW.price);
-END |
-DELIMITER ;
+--   SET NEW.TAG = CONCAT(NEW.name, ' ', NEW.description, ' ', NEW.price);
+-- END |
+-- DELIMITER ;
 
-DELIMITER |
-CREATE TRIGGER `item_category_tag_update` BEFORE UPDATE ON `category`
-FOR EACH ROW 
-BEGIN
-  SET NEW.TAG = CONCAT(NEW.name, ' ', NEW.description, ' ', NEW.price);
-END |
-DELIMITER ;
+-- DELIMITER |
+-- CREATE TRIGGER `item_category_tag_update` BEFORE UPDATE ON `category`
+-- FOR EACH ROW 
+-- BEGIN
+--   SET NEW.TAG = CONCAT(NEW.name, ' ', NEW.description, ' ', NEW.price);
+-- END |
+-- DELIMITER ;
 
 INSERT INTO category (`ID`, `Name`) VALUES (1, 'optio');
 INSERT INTO category (`ID`, `Name`) VALUES (2, 'temporibus');

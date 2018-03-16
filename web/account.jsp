@@ -23,6 +23,16 @@
                             <hr class="soft"/>
 
                             <div class="well">
+                            <s:url id="editURL" action="editUser">
+                                <s:param name="id" value="#session.userId"></s:param>
+                            </s:url> <s:a href="%{editURL}">Edit my account</s:a>
+                            <br>
+                            <s:url id="deleteURL" action="deleteUser">
+                                <s:param name="id" value="#session.userId"></s:param>
+                            </s:url> <s:a href="%{deleteURL}" onclick="return confirm('Are you sure you want to delete your account ?')">Delete my account</s:a>
+                            </div>
+
+                            <div class="well">
                                 <h3>Orders</h3>
                             <s:form action="findOrdersByDate">
                                 <s:hidden name="orders.user.id" value="#session.userId" />
@@ -94,8 +104,8 @@
                             </div>	
                             <s:form action="saveOrUpdateAddress" class="form-horizontal" >
                                 <h3>Create an address</h3>
-                                    <div class="control-group">
-                                        <div class="controls">
+                                <div class="control-group">
+                                    <div class="controls">
                                         <s:textfield name="address.line1" placeholder=" Line 1"/>
                                     </div>
                                 </div>

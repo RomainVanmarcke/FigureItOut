@@ -23,7 +23,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
    
     public String login() {
         User validUser =  userDAO.checkCredentials(user.getName(), user.getFirstName());
-        if (validUser != null) {
+        if (validUser != null && validUser.getDeleted() != true) {
             sessionMap.put("userId", validUser.getId());
             sessionMap.put("userName", validUser.getFirstName());
             sessionMap.put("userRole",validUser.getRole());

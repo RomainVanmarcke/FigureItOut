@@ -41,9 +41,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
     public String saveOrUpdate() {
         user.setRole("Client");
-        // FIXME : Auth is created whether it is an update or a new creation
-//        user.getAuth().setId(oldAuthId);
-//        System.out.println("UserAction saveOrUpdate " + user.getAuth().getId());
+        user.setDeleted(false);
         userDAO.saveOrUpdateUser(user);
         Map<String, Object> sessionMap = ActionContext.getContext().getSession();
         sessionMap.put("userId", user.getId());
@@ -59,16 +57,28 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
     public String delete() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
-        userDAO.deleteUser(Long.parseLong(request.getParameter("id")));
-        return SUCCESS;
+        Integer myId = Integer.parseInt(request.getParameter("id"));
+        Map<String, Object> sessionMap = ActionContext.getContext().getSession();
+        
+        
+        if (sessionMap.get("userId") == myId) {
+            userDAO.deleteUser(Integer.parseInt(request.getParameter("id")));
+            sessionMap.clear();
+            return SUCCESS;
+        }
+        return ERROR;
     }
 
     public String edit() {
+        Map<String, Object> sessionMap = ActionContext.getContext().getSession();
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
-        user = userDAO.findUserById(Integer.parseInt(request.getParameter("id")));
-//        System.out.println("UserAction edit " + user.getAuth().getId());
-        oldAuthId = user.getAuth().getId();
-        return SUCCESS;
+        Integer myId = Integer.parseInt(request.getParameter("id"));
+        
+        if (sessionMap.get("userId") == myId) {
+            user = userDAO.findUserById(myId);
+            return SUCCESS;
+        }
+        return ERROR;
     }
 
     public User getUser() {

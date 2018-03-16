@@ -13,6 +13,8 @@
         </jsp:attribute>
 
         <jsp:body>
+            
+            <s:actionerror/>
 
             <div class="row">
                 <%@ include file="sidebar.jsp" %>  

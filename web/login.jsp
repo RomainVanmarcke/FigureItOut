@@ -26,23 +26,6 @@
                     <hr class="soft"/>
 
                     <div class="row">
-                        <div class="span4">
-                            <div class="well">
-                                <h5>CREATE YOUR ACCOUNT</h5><br/>
-                                Enter your e-mail address to create an account.<br/><br/><br/>
-                                <form>
-                                    <div class="control-group">
-                                        <label class="control-label" for="inputEmail">E-mail address</label>
-                                        <div class="controls">
-                                            <input class="span3"  type="text" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="controls">
-                                        <button type="submit" class="btn block">Create Your Account</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                         <div class="span1"> &nbsp;</div>
                         <div class="span4">
                             <div class="well">
@@ -51,7 +34,7 @@
                                 <s:actionerror/>
                                 <s:form action="loginUser">
                                     <s:textfield name="user.name" label="Name"></s:textfield>
-                                    <s:password name="user.firstName" label="FirstName"></s:password>
+                                    <s:password name="user.firstName" label="Password"></s:password>
                                     <s:submit value="Login"></s:submit>
 
                                 </s:form>
