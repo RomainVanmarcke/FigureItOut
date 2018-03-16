@@ -26,26 +26,31 @@ import org.apache.struts2.ServletActionContext;
  * @author raphael
  */
 public class LineCartAction {
-    
+
     private Linecart linecart = new Linecart();
-    private List<Linecart> linecartList = new ArrayList<Linecart>();
+    private List<Linecart> linecartList;
     private int quantityInCart;
     private int totalPrice;
     private LineCartDAO linecartDAO = new LineCartDAO();
     private ItemDAO itemDAO = new ItemDAO();
     private User user = new User();
     private UserDAO userDAO = new UserDAO();
-    
-    public String execute()throws Exception{
+
+    public String execute() throws Exception {
         
+        linecartList = new ArrayList<Linecart>();
+
         linecartDAO.saveOrUpdateLinecart(linecart);
         Map<String, Object> session = ActionContext.getContext().getSession();
         //list();
-        listByUserID((int)session.get("userId"));
-        quantityInCart = 0; totalPrice = 0;
-        for(Linecart line : linecartList) {
-               quantityInCart++;
-               totalPrice = totalPrice + (line.getQuantity()*line.getPrice());
+        listByUserID((int) session.get("userId"));
+        quantityInCart = 0;
+        totalPrice = 0;
+        if (linecartList != null) {
+            for (Linecart line : linecartList) {
+                quantityInCart++;
+                totalPrice = totalPrice + (line.getQuantity() * line.getPrice());
+            }
         }
         return SUCCESS;
     }
@@ -55,12 +60,11 @@ public class LineCartAction {
 //        linecartList = linecartDAO.listLinecartByUserID(1);
 //        return SUCCESS;
 //    }
-    
-    public String listByUserID(int id)throws Exception{
+    public String listByUserID(int id) throws Exception {
         linecartList = linecartDAO.listLinecartByUserID(id);
         return SUCCESS;
     }
-    
+
     public Linecart getModel() {
         return linecart;
     }
@@ -86,11 +90,11 @@ public class LineCartAction {
     public List<Linecart> getLinecartList() {
         return linecartList;
     }
-    
+
     public int getQuantityInCart() {
         return quantityInCart;
     }
-    
+
     public int getTotalPrice() {
         return totalPrice;
     }
@@ -98,7 +102,7 @@ public class LineCartAction {
     public void setLinecartList(List<Linecart> linecartList) {
         this.linecartList = linecartList;
     }
-    
+
     public String delete() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
         int linecartID = Integer.parseInt(request.getParameter("Linecart.id"));
@@ -106,7 +110,7 @@ public class LineCartAction {
         linecartDAO.deleteLinecart(linecartID);
         return SUCCESS;
     }
-    
+
     public String updateQuantity() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
         int linecartID = Integer.parseInt(request.getParameter("Linecart.id"));
@@ -115,10 +119,10 @@ public class LineCartAction {
         linecartDAO.updateQuantityLinecart(linecartID, linecartNewQuantity);
         return SUCCESS;
     }
-    
+
     public String addLinecart() {
         Map<String, Object> session = ActionContext.getContext().getSession();
-        int userID = (int)session.get("userId");
+        int userID = (int) session.get("userId");
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
         long itemID = Integer.parseInt(request.getParameter("Item.id"));
         int itemQuantity = Integer.parseInt(request.getParameter("Item.quantity"));
@@ -130,8 +134,4 @@ public class LineCartAction {
         return SUCCESS;
     }
 
-
-
-    
-        
 }
