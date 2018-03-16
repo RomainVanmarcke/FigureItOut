@@ -86,4 +86,14 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
     public void setUserList(List<User> userList) {
         this.userList = userList;
     }
+    
+    @Override
+    public void validate() {
+        if (user.getMail().length() == 0) {
+            addFieldError("user.mail", "Email is required.");
+        }
+        if (!(user.getMail().contains("@") && user.getMail().contains("."))) {
+            addFieldError("user.mail", "Email must contain an '@' and a '.'");
+        }
+    }
 }
