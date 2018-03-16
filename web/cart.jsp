@@ -21,7 +21,7 @@
                         <li class="active">Check Out</li>
                     </ul>
                     <div class="well well-small">
-                        <h1>Cart <small class="pull-right"> x Items are in the cart of <s:property value="#session.userName"></s:property> </small></h1>
+                        <h1>Cart <small class="pull-right"> <s:property value="quantityInCart" /></td> Items are in the cart of <s:property value="#session.userName"></s:property></br> TOTAL : <s:property value="totalPrice" /> $ </small></h1>
                             <hr class="soften"/>	
 
                             <table class="table table-bordered table-condensed">

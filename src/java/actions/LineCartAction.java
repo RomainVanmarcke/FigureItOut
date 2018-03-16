@@ -29,6 +29,8 @@ public class LineCartAction {
     
     private Linecart linecart = new Linecart();
     private List<Linecart> linecartList = new ArrayList<Linecart>();
+    private int quantityInCart;
+    private int totalPrice;
     private LineCartDAO linecartDAO = new LineCartDAO();
     private ItemDAO itemDAO = new ItemDAO();
     private User user = new User();
@@ -40,6 +42,11 @@ public class LineCartAction {
         Map<String, Object> session = ActionContext.getContext().getSession();
         //list();
         listByUserID((int)session.get("userId"));
+        quantityInCart = 0; totalPrice = 0;
+        for(Linecart line : linecartList) {
+               quantityInCart++;
+               totalPrice = totalPrice + (line.getQuantity()*line.getPrice());
+        }
         return SUCCESS;
     }
 
@@ -79,6 +86,14 @@ public class LineCartAction {
     public List<Linecart> getLinecartList() {
         return linecartList;
     }
+    
+    public int getQuantityInCart() {
+        return quantityInCart;
+    }
+    
+    public int getTotalPrice() {
+        return totalPrice;
+    }
 
     public void setLinecartList(List<Linecart> linecartList) {
         this.linecartList = linecartList;
@@ -114,6 +129,9 @@ public class LineCartAction {
         linecartDAO.addLinecart(user, item, itemQuantity, itemPrice);
         return SUCCESS;
     }
+
+
+
     
         
 }
