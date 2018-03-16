@@ -55,6 +55,9 @@ public class UserDAO {
 
     public void saveOrUpdateUser(User user) {
         try {
+            if (user.getDeleted() == null) {
+                user.setDeleted(false);
+            }
             session.saveOrUpdate(user.getAuth());
             session.saveOrUpdate(user);
             session.getTransaction().commit();

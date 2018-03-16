@@ -28,7 +28,6 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
     private List<User> userList = new ArrayList<User>();
     private UserDAO userDAO = new UserDAO();
     public String confirmPassword;
-    public Integer oldAuthId;
     
     public String findById() {
         user = userDAO.findUserById(user.getId());
@@ -41,7 +40,6 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
     public String saveOrUpdate() {
         user.setRole("Client");
-        user.setDeleted(false);
         userDAO.saveOrUpdateUser(user);
         Map<String, Object> sessionMap = ActionContext.getContext().getSession();
         sessionMap.put("userId", user.getId());
@@ -96,4 +94,14 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
     public void setUserList(List<User> userList) {
         this.userList = userList;
     }
+    
+//    @Override
+//    public void validate() {
+//        if (user.getMail().length() == 0) {
+//            addFieldError("user.mail", "Email is required.");
+//        }
+//        if (!(user.getMail().contains("@") && user.getMail().contains("."))) {
+//            addFieldError("user.mail", "Email must contain an '@' and a '.'");
+//        }
+//    }
 }

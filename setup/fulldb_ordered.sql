@@ -2,6 +2,9 @@
 # TABLE STRUCTURE FOR: auth
 #
 
+CREATE DATABASE figureitout;
+USE figureitout;
+
 DROP TABLE IF EXISTS auth;
 
 CREATE TABLE `auth` (
@@ -848,24 +851,6 @@ CREATE TABLE `category` (
   `Name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-
--- DELIMITER |
--- CREATE TRIGGER `item_category_tag_insert` BEFORE INSERT ON `category`
--- FOR EACH ROW 
--- BEGIN
-  
-
---   SET NEW.TAG = CONCAT(NEW.name, ' ', NEW.description, ' ', NEW.price);
--- END |
--- DELIMITER ;
-
--- DELIMITER |
--- CREATE TRIGGER `item_category_tag_update` BEFORE UPDATE ON `category`
--- FOR EACH ROW 
--- BEGIN
---   SET NEW.TAG = CONCAT(NEW.name, ' ', NEW.description, ' ', NEW.price);
--- END |
--- DELIMITER ;
 
 INSERT INTO category (`ID`, `Name`) VALUES (1, 'optio');
 INSERT INTO category (`ID`, `Name`) VALUES (2, 'temporibus');

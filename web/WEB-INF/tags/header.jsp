@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+?<!DOCTYPE html>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <html lang="en">
 
@@ -48,7 +48,7 @@
                         <a href="register.jsp"><span class="icon-edit"></span> Free Register </a> 
                         
                         <s:if test="#session.userName != null">
-                            <a href="LineCartAction"><span class="icon-shopping-cart"></span> Panier - <span class="badge badge-warning"> $xxx.x</span></a>
+                            <a href="LineCartAction"><span class="icon-shopping-cart"></span> Cart <span class="badge badge-warning"></span></a>
                         </s:if>
                     </div>
                 </div>
@@ -79,6 +79,9 @@
                             <ul class="nav">
                                 <li class=""><a href="index.jsp">Home	</a></li>
                                 <li class=""><a href="users.jsp">Users</a></li>
+                                <s:if test="#session.userRole == 'Admin'">
+                                    <li class=""><a href="ItemAction">Items</a></li>
+                                </s:if>
                                 <li class=""><a href="<s:url action="advancedSearch" />">Advanced Search</a></li>
                             </ul>
                             
